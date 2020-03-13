@@ -6,7 +6,64 @@
         xmlns:local="clr-namespace:BasicGeometricShapes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
         
+        <DockPanel Grid.Row="1" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Menu DockPanel.Dock="Top" FontSize="12" >
+                <Menu.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFBCF5F2" Offset="0"/>
+                        <GradientStop Color="#FF20B0A7" Offset="1"/>
+                    </LinearGradientBrush>
+                </Menu.Background>
+                
+                <MenuItem Width="120" ToolTip="Overview of water consumption">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Elipse" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Image Width="31" Height="30" Source="C:\Users\buduc\OneDrive\Desktop\RG_EXAM1\BasicGeometricShapes\BasicGeometricShapes\Images\elispe1.png"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Width="120" ToolTip="Base with all parts of system" >
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Rectangle" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Image Width="29" Height="26" Source="C:\Users\buduc\OneDrive\Desktop\RG_EXAM1\BasicGeometricShapes\BasicGeometricShapes\Images\rectangle.jpg"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Width="100" ToolTip="Graphical presentation of consumption">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Polygon" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Image Width="31" Height="30" Source="C:\Users\buduc\OneDrive\Desktop\RG_EXAM1\BasicGeometricShapes\BasicGeometricShapes\Images\polygon1.png"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem  Width="80" ToolTip="Daily status change report" >
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Image" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Image Width="29" Height="26" Source="C:\Users\buduc\OneDrive\Desktop\RG_EXAM1\BasicGeometricShapes\BasicGeometricShapes\Images\image2.png"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Width="80" ToolTip="Help and options" >
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="32" Height="29" Source="C:\Users\ASUS\Desktop\PZ3MarkoTatic\PZ3-NetworkService\PZ3-NetworkService\helpIcon.png"/>
+                            <TextBlock Text="Clear" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
     </Grid>
 </Window>
