@@ -22,9 +22,11 @@ namespace BasicGeometricShapes
     public partial class MainWindow : Window
     {
         private static string selectedMenuItem = "";
+        public static List<Shape> canvasShapes;
         public MainWindow()
         {
             InitializeComponent();
+            canvasShapes = new List<Shape>();
         }
 
         private void ActiveCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -50,7 +52,16 @@ namespace BasicGeometricShapes
             }          
         }
 
-        private void Elipse_Click(object sender, RoutedEventArgs e)
+        private void ActiveCanvas_MouseLeftButtonDown2(object sender, MouseButtonEventArgs e)
+        {
+            if (e.OriginalSource is Ellipse)//fercera ko zmaj
+            {
+                Ellipse clickedEllipsy = (Ellipse)e.OriginalSource;
+                clickedEllipsy.Fill = Brushes.Red;
+            }
+        }
+
+            private void Elipse_Click(object sender, RoutedEventArgs e)
         {
             Rectangle.IsChecked = false;
             Polygon.IsChecked = false;
