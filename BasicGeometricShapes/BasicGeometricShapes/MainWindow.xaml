@@ -13,17 +13,17 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        
+
         <DockPanel Grid.Row="1" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <Menu DockPanel.Dock="Top" FontSize="12" >
+            <Menu x:Name="MenuItems" DockPanel.Dock="Top" FontSize="12" >
                 <Menu.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFBCF5F2" Offset="0"/>
                         <GradientStop Color="#FF20B0A7" Offset="1"/>
                     </LinearGradientBrush>
                 </Menu.Background>
-                
-                <MenuItem Width="120" ToolTip="Overview of water consumption">
+
+                <MenuItem x:Name="Elipse" Width="120" IsCheckable="True" ToolTip="Overview of water consumption" Click="Elipse_Click" >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Elipse" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -31,7 +31,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem Width="120" ToolTip="Base with all parts of system" >
+                <MenuItem x:Name="Rectangle" Width="120" IsCheckable="True" ToolTip="Base with all parts of system" Click="Rectangle_Click"  >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Rectangle" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -39,7 +39,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem Width="100" ToolTip="Graphical presentation of consumption">
+                <MenuItem x:Name="Polygon" Width="100" IsCheckable="True" ToolTip="Graphical presentation of consumption" Click="Polygon_Click">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Polygon" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -47,7 +47,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem  Width="80" ToolTip="Daily status change report" >
+                <MenuItem x:Name="Image"  Width="80" IsCheckable="True" ToolTip="Daily status change report" Click="Image_Click" >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Image" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -55,7 +55,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem Width="80" ToolTip="Help and options" >
+                <MenuItem x:Name="Clear" Width="80" IsCheckable="True" ToolTip="Help and options" >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Width="32" Height="29" Source="C:\Users\ASUS\Desktop\PZ3MarkoTatic\PZ3-NetworkService\PZ3-NetworkService\helpIcon.png"/>
@@ -65,5 +65,6 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
+        <Canvas x:Name="ActiveCanvas" Background="Transparent" MouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown" HorizontalAlignment="Left" Height="340" Margin="36,0,0,-338" Grid.Row="2" VerticalAlignment="Top" Width="724"/>
     </Grid>
 </Window>
