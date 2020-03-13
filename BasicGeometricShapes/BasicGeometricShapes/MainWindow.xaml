@@ -20,7 +20,7 @@
                 <Menu.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFB0FFB7" Offset="0"/>
-                        <GradientStop Color="#FF20B034" Offset="1"/>
+                        <GradientStop Color="#FF4BEC61" Offset="1"/>
                     </LinearGradientBrush>
                 </Menu.Background>
 
@@ -70,9 +70,11 @@
             </Menu>
         </DockPanel>
         <StackPanel Grid.Row="2" >
-            <Canvas x:Name="ActiveCanvas" Background="LightGray" MouseRightButtonDown="ActiveCanvas_MouseLeftButtonDown" PreviewMouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown2" Height="340" Grid.Row="2" Width="710">
+            <Canvas x:Name="ActiveCanvas"  Background="LightGray" MouseRightButtonDown="ActiveCanvas_MouseLeftButtonDown" PreviewMouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown2" Height="340" Grid.Row="2" Width="710" UseLayoutRounding="False" ClipToBounds="True">
                 <!--<Ellipse Width="200" Canvas.Left="100" Height="500" Fill="Yellow"></Ellipse>-->
             </Canvas>
+            
+            
         </StackPanel>
         
     </Grid>

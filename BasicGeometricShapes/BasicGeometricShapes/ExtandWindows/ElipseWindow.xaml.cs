@@ -43,6 +43,7 @@ namespace BasicGeometricShapes.ExtandWindows
             Canvas.SetLeft(ellipse, points.X);
             activeDrawTable.Children.Add(ellipse);
 
+
             MainWindow.canvasShapes.Add(ellipse);
 
             this.Close();

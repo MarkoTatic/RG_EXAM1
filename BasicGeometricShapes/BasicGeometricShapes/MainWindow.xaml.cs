@@ -61,7 +61,7 @@ namespace BasicGeometricShapes
             }
         }
 
-            private void Elipse_Click(object sender, RoutedEventArgs e)
+        private void Elipse_Click(object sender, RoutedEventArgs e)
         {
             Rectangle.IsChecked = false;
             Polygon.IsChecked = false;
