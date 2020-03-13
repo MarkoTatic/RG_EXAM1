@@ -17,7 +17,7 @@
         <TextBox x:Name="elipseHeight" HorizontalAlignment="Left" Height="28" Margin="145,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
         <TextBox x:Name="elipseThickness" HorizontalAlignment="Left" Height="28" Margin="144,183,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
         <Button Content="Draw" HorizontalAlignment="Left" Height="28" Margin="24,225,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="158,225,0,0" VerticalAlignment="Top" Width="116"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="158,225,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_1"/>
         <xctk:ColorPicker x:Name="elipseFillColor" HorizontalAlignment="Left" Height="28" Margin="145,105,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
         <xctk:ColorPicker x:Name="ellipseBroderColor" HorizontalAlignment="Left" Height="28" Margin="144,143,0,0" VerticalAlignment="Top" Width="139"/>
     </Grid>

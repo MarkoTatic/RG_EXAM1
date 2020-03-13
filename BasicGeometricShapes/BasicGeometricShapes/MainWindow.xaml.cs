@@ -35,7 +35,6 @@ namespace BasicGeometricShapes
                 Point p = Mouse.GetPosition(ActiveCanvas);
                 ElipseWindow elipseWindow = new ElipseWindow(p, ActiveCanvas);
                 elipseWindow.ShowDialog();
-                elipseWindow.Close();
             }
             else if (Rectangle.IsChecked)
             {

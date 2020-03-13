@@ -1,4 +1,4 @@
-﻿<Window x:Class="BasicGeometricShapes.MainWindow"
+﻿<Window x:Name="mainGrid" x:Class="BasicGeometricShapes.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -18,16 +18,17 @@
             <Menu x:Name="MenuItems" DockPanel.Dock="Top" FontSize="12" >
                 <Menu.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFBCF5F2" Offset="0"/>
-                        <GradientStop Color="#FF20B0A7" Offset="1"/>
+                        <GradientStop Color="#FFB0FFB7" Offset="0"/>
+                        <GradientStop Color="#FF20B034" Offset="1"/>
                     </LinearGradientBrush>
                 </Menu.Background>
 
-                <MenuItem x:Name="Elipse" Width="120" IsCheckable="True" ToolTip="Overview of water consumption" Click="Elipse_Click" >
+                <MenuItem x:Name="Elipse" Width="90" IsCheckable="True" ToolTip="Overview of water consumption" Click="Elipse_Click" >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Elipse" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Image Width="31" Height="30" Source="C:\Users\buduc\OneDrive\Desktop\RG_EXAM1\BasicGeometricShapes\BasicGeometricShapes\Images\elispe1.png"/>
+                            <TextBlock Text="Elipse" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" />
+                            <Image Width="31" Height="30" Source="Images/elli.png">
+                            </Image>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
@@ -35,7 +36,7 @@
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Rectangle" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Image Width="29" Height="26" Source="C:\Users\buduc\OneDrive\Desktop\RG_EXAM1\BasicGeometricShapes\BasicGeometricShapes\Images\rectangle.jpg"/>
+                            <Image Width="39" Height="26" Source="Images/rect.png"/>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
@@ -43,7 +44,9 @@
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Polygon" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Image Width="31" Height="30" Source="C:\Users\buduc\OneDrive\Desktop\RG_EXAM1\BasicGeometricShapes\BasicGeometricShapes\Images\polygon1.png"/>
+                            <Image Width="46" Height="30" Source="Images\poly.png">
+                                
+                            </Image>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
@@ -51,20 +54,20 @@
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Image" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <Image Width="29" Height="26" Source="C:\Users\buduc\OneDrive\Desktop\RG_EXAM1\BasicGeometricShapes\BasicGeometricShapes\Images\image2.png"/>
+                            <Image Width="49" Height="39" Source="Images\imgg.png"/>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
                 <MenuItem x:Name="Clear" Width="80" IsCheckable="True" ToolTip="Help and options" >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Width="32" Height="29" Source="C:\Users\ASUS\Desktop\PZ3MarkoTatic\PZ3-NetworkService\PZ3-NetworkService\helpIcon.png"/>
                             <TextBlock Text="Clear" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Image Width="42" Height="39" Source="Images\clr.png"/>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <Canvas x:Name="ActiveCanvas" Background="Transparent" MouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown" HorizontalAlignment="Left" Height="340" Margin="36,0,0,-338" Grid.Row="2" VerticalAlignment="Top" Width="724"/>
+        <Canvas x:Name="ActiveCanvas" Background="LightGray" MouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown" HorizontalAlignment="Left" Height="340" Margin="36,0,0,-336" Grid.Row="2" VerticalAlignment="Top" Width="710"/>
     </Grid>
 </Window>

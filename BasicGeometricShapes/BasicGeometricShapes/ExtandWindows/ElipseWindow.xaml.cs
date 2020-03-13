@@ -41,8 +41,14 @@ namespace BasicGeometricShapes.ExtandWindows
             ellipse.StrokeThickness = Double.Parse(elipseThickness.Text);
             Canvas.SetTop(ellipse, points.Y);
             Canvas.SetLeft(ellipse, points.X);
-
             activeDrawTable.Children.Add(ellipse);
+
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
