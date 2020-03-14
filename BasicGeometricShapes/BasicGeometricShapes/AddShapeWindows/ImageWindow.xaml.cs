@@ -43,13 +43,13 @@ namespace BasicGeometricShapes.AddShapeWindows
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Image image = new Image();
+            image.Stretch = Stretch.Fill;//da bi lepo pokrio sve velicine slike
             image.Width = Double.Parse(imageWidth.Text);
             image.Height = Double.Parse(imageHeight.Text);
             image.Source = new ImageSourceConverter().ConvertFromString(ImageWindow.imgSource) as ImageSource;
             Canvas.SetTop(image, points.Y);
             Canvas.SetLeft(image, points.X);
             activeDrawTable.Children.Add(image);
-
             this.Close();
         }
 
