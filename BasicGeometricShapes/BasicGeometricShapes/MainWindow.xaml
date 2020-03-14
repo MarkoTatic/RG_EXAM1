@@ -88,6 +88,7 @@
         <StackPanel Grid.Row="2" >
             <Canvas x:Name="ActiveCanvas"  Background="LightGray" MouseRightButtonDown="ActiveCanvas_MouseLeftButtonDown" PreviewMouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown2" Height="340" Grid.Row="2" Width="710" UseLayoutRounding="False" ClipToBounds="True">
                 <!--<Ellipse Width="200" Canvas.Left="100" Height="500" Fill="Yellow"></Ellipse>-->
+                <!--<Polygon Points="20 20, 30 100, 50 10" Fill="AliceBlue"></Polygon>-->
             </Canvas>
             
             

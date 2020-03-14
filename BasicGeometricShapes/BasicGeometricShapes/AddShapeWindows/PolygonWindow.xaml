@@ -1,0 +1,20 @@
+﻿<Window x:Class="BasicGeometricShapes.AddShapeWindows.PolygonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BasicGeometricShapes.AddShapeWindows"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="PolygonWindow" Height="215" Width="310">
+    <Grid>
+        <Label Content="Fill Color:" HorizontalAlignment="Left" Height="23" Margin="10,16,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label Content="Border Color:" HorizontalAlignment="Left" Height="28" Margin="10,50,0,0" VerticalAlignment="Top" Width="82"/>
+        <Label Content="Border Thickness:" HorizontalAlignment="Left" Height="26" Margin="10,91,0,0" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="elipseThickness" HorizontalAlignment="Left" Height="28" Margin="145,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+        <Button Content="Draw" HorizontalAlignment="Left" Height="28" Margin="22,145,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_1" />
+        <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="158,145,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click" />
+        <xctk:ColorPicker x:Name="elipseFillColor" HorizontalAlignment="Left" Height="23" Margin="145,16,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
+        <xctk:ColorPicker x:Name="ellipseBroderColor" HorizontalAlignment="Left" Height="28" Margin="145,50,0,0" VerticalAlignment="Top" Width="139"/>
+    </Grid>
+</Window>

@@ -24,10 +24,12 @@ namespace BasicGeometricShapes
     {
         private static string selectedMenuItem = "";
         public static List<Shape> canvasShapes;
+        public static List<Point> polygonPoints;
         public MainWindow()
         {
             InitializeComponent();
             canvasShapes = new List<Shape>();
+            polygonPoints = new List<Point>();
         }
 
         private void ActiveCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -49,6 +51,19 @@ namespace BasicGeometricShapes
             else if (Polygon.IsChecked)
             {
                 selectedMenuItem = "Polygon";
+                Point p = Mouse.GetPosition(ActiveCanvas);
+                polygonPoints.Add(p);
+
+                Ellipse ellipse = new Ellipse();
+                ellipse.Width = 5;
+                ellipse.Height = 5;
+                ellipse.Fill = Brushes.LightSeaGreen;
+                ellipse.Stroke = Brushes.LightSeaGreen;
+                ellipse.StrokeThickness = 1;
+                Canvas.SetTop(ellipse, p.Y);
+                Canvas.SetLeft(ellipse, p.X);
+                ActiveCanvas.Children.Add(ellipse);
+
             }
             else if (Image.IsChecked)
             {

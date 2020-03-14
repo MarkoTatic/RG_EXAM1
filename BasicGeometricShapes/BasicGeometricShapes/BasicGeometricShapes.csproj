@@ -74,6 +74,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddShapeWindows\PolygonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddShapeWindows\RectangleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +94,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddShapeWindows\PolygonWindow.xaml.cs">
+      <DependentUpon>PolygonWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddShapeWindows\RectangleWindow.xaml.cs">
       <DependentUpon>RectangleWindow.xaml</DependentUpon>
     </Compile>
