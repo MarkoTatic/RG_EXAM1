@@ -19,19 +19,36 @@ namespace BasicGeometricShapes.AddShapeWindows
     /// </summary>
     public partial class PolygonWindow : Window
     {
-        public PolygonWindow()
+        public static Canvas activeDrawTable;
+        public PolygonWindow(Canvas canvas)
         {
             InitializeComponent();
+            activeDrawTable = canvas;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Polygon polygon = new Polygon();
+            foreach (Point point in MainWindow.polygonPoints)
+            {
+                polygon.Points.Add(point);
+            }
 
+            polygon.StrokeThickness = Double.Parse(polygonThickness.Text);
+            var stringFillColor = polygonFillColor.SelectedColorText;
+            polygon.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
+            var BorderColor = polygonBroderColor.SelectedColorText;
+            polygon.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
+            activeDrawTable.Children.Add(polygon);
+
+            MainWindow.canvasShapes.Add(polygon);
+            MainWindow.polygonPoints.Clear();
+            this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

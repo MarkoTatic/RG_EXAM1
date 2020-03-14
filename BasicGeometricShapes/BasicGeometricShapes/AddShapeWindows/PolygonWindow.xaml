@@ -11,10 +11,10 @@
         <Label Content="Fill Color:" HorizontalAlignment="Left" Height="23" Margin="10,16,0,0" VerticalAlignment="Top" Width="68"/>
         <Label Content="Border Color:" HorizontalAlignment="Left" Height="28" Margin="10,50,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Content="Border Thickness:" HorizontalAlignment="Left" Height="26" Margin="10,91,0,0" VerticalAlignment="Top" Width="121"/>
-        <TextBox x:Name="elipseThickness" HorizontalAlignment="Left" Height="28" Margin="145,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
-        <Button Content="Draw" HorizontalAlignment="Left" Height="28" Margin="22,145,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_1" />
-        <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="158,145,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click" />
-        <xctk:ColorPicker x:Name="elipseFillColor" HorizontalAlignment="Left" Height="23" Margin="145,16,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
-        <xctk:ColorPicker x:Name="ellipseBroderColor" HorizontalAlignment="Left" Height="28" Margin="145,50,0,0" VerticalAlignment="Top" Width="139"/>
+        <TextBox x:Name="polygonThickness" HorizontalAlignment="Left" Height="28" Margin="145,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+        <Button Content="Draw" HorizontalAlignment="Left" Height="28" Margin="22,145,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click" />
+        <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="158,145,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_1" />
+        <xctk:ColorPicker x:Name="polygonFillColor" HorizontalAlignment="Left" Height="23" Margin="145,16,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
+        <xctk:ColorPicker x:Name="polygonBroderColor" HorizontalAlignment="Left" Height="28" Margin="145,50,0,0" VerticalAlignment="Top" Width="139"/>
     </Grid>
 </Window>

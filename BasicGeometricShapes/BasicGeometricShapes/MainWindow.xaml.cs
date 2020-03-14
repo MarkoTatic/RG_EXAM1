@@ -73,7 +73,16 @@ namespace BasicGeometricShapes
 
         private void ActiveCanvas_MouseLeftButtonDown2(object sender, MouseButtonEventArgs e)
         {
-            if (e.OriginalSource is Ellipse)//fercera ko zmaj
+            if (Polygon.IsChecked && polygonPoints.Count > 0)//u slucaju da je stavljena bar jedna tacka na Canvas i klikne se bilo gde teme polygona i ako je polygon aktivan u meniju napravi polygon
+            {
+                PolygonWindow polygonWindow = new PolygonWindow(ActiveCanvas);
+                polygonWindow.ShowDialog();
+            }
+            else if (e.OriginalSource is Polygon)//za edit polygona
+            {
+
+            }
+            else if (e.OriginalSource is Ellipse)//fercera ko zmaj
             {
                 Ellipse clickedEllipsy = (Ellipse)e.OriginalSource;
                 Point p = Mouse.GetPosition(ActiveCanvas);
@@ -87,6 +96,9 @@ namespace BasicGeometricShapes
                 rectangleWindowEdit.ShowDialog();
             }
         }
+
+
+        
 
         private void Elipse_Click(object sender, RoutedEventArgs e)
         {
@@ -128,5 +140,7 @@ namespace BasicGeometricShapes
             Elipse.IsChecked = false;
             ActiveCanvas.Children.RemoveRange(0, ActiveCanvas.Children.Count);
         }
+
+        
     }
 }
