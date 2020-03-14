@@ -63,7 +63,6 @@ namespace BasicGeometricShapes
                 Canvas.SetTop(ellipse, p.Y);
                 Canvas.SetLeft(ellipse, p.X);
                 ActiveCanvas.Children.Add(ellipse);
-
             }
             else if (Image.IsChecked)
             {

@@ -39,6 +39,8 @@ namespace BasicGeometricShapes.AddShapeWindows
             polygon.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
             var BorderColor = polygonBroderColor.SelectedColorText;
             polygon.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
+            polygon.FillRule = FillRule.Nonzero;//da preklapa lepo
+            
             activeDrawTable.Children.Add(polygon);
 
             MainWindow.canvasShapes.Add(polygon);
