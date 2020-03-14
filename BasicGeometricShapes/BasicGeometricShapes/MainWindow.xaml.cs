@@ -36,13 +36,15 @@ namespace BasicGeometricShapes
             {
                 selectedMenuItem = "Elipse";
                 Point p = Mouse.GetPosition(ActiveCanvas);
-                Ellipse tmpEl = new Ellipse();
                 ElipseWindow elipseWindow = new ElipseWindow(p, ActiveCanvas); // 0 for add
                 elipseWindow.ShowDialog();
             }
             else if (Rectangle.IsChecked)
             {
                 selectedMenuItem = "Rectangle";
+                Point p = Mouse.GetPosition(ActiveCanvas);
+                RectangleWindow rectangleWindow = new RectangleWindow(p, ActiveCanvas);
+                rectangleWindow.ShowDialog();
             }
             else if (Polygon.IsChecked)
             {
@@ -62,6 +64,12 @@ namespace BasicGeometricShapes
                 Point p = Mouse.GetPosition(ActiveCanvas);
                 ElipseWindowEdit elipseWindow = new ElipseWindowEdit(ActiveCanvas, clickedEllipsy); // 1 for edit
                 elipseWindow.ShowDialog();
+            }
+            else if (e.OriginalSource is Rectangle)
+            {
+                Rectangle clickedRectangle = (Rectangle)e.OriginalSource;
+                RectangleWindowEdit rectangleWindowEdit = new RectangleWindowEdit(ActiveCanvas, clickedRectangle);
+                rectangleWindowEdit.ShowDialog();
             }
         }
 

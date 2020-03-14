@@ -74,7 +74,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddShapeWindows\RectangleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditShapeWindows\ElipseWindowEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditShapeWindows\RectangleWindowEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -82,6 +90,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddShapeWindows\RectangleWindow.xaml.cs">
+      <DependentUpon>RectangleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -91,6 +102,9 @@
     </Compile>
     <Compile Include="EditShapeWindows\ElipseWindowEdit.xaml.cs">
       <DependentUpon>ElipseWindowEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditShapeWindows\RectangleWindowEdit.xaml.cs">
+      <DependentUpon>RectangleWindowEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
