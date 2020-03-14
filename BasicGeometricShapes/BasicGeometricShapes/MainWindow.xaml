@@ -19,8 +19,8 @@
             <Menu x:Name="MenuItems" DockPanel.Dock="Top" FontSize="12" >
                 <Menu.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFB0FFB7" Offset="0"/>
-                        <GradientStop Color="#FF89FF99" Offset="1"/>
+                        <GradientStop Color="#FFB0FFB7" Offset="1"/>
+                        <GradientStop Color="#FF89FF99" Offset="0"/>
                     </LinearGradientBrush>
                 </Menu.Background>
 
@@ -86,7 +86,7 @@
             </Menu>
         </DockPanel>
         <StackPanel Grid.Row="2" >
-            <Canvas x:Name="ActiveCanvas"  Background="LightGray" MouseRightButtonDown="ActiveCanvas_MouseLeftButtonDown" PreviewMouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown2" Height="340" Grid.Row="2" Width="710" UseLayoutRounding="False" ClipToBounds="True">
+            <Canvas x:Name="ActiveCanvas"  Background="#FFD7F7DA" MouseRightButtonDown="ActiveCanvas_MouseLeftButtonDown" PreviewMouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown2" Height="340" Grid.Row="2" Width="710" UseLayoutRounding="False" ClipToBounds="True">
                 <!--<Ellipse Width="200" Canvas.Left="100" Height="500" Fill="Yellow"></Ellipse>-->
                 <!--<Polygon Points="20 20, 30 100, 50 10, 155 53, 153 111, 1 35, 353 111" Fill="AliceBlue" FillRule="Nonzero"></Polygon>-->
             </Canvas>
