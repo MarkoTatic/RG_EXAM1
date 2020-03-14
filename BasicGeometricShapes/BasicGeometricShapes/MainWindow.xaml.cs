@@ -67,6 +67,9 @@ namespace BasicGeometricShapes
             else if (Image.IsChecked)
             {
                 selectedMenuItem = "Image";
+                Point p = Mouse.GetPosition(ActiveCanvas);
+                ImageWindow imageWindow = new ImageWindow(p, ActiveCanvas);
+                imageWindow.ShowDialog();
             }          
         }
 
