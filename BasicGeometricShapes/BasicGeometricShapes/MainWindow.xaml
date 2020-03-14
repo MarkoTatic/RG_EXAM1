@@ -59,7 +59,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="Clear" Width="80" IsCheckable="True" ToolTip="Help and options" >
+                <MenuItem x:Name="Clear" Width="80" IsCheckable="True" ToolTip="Help and options" Click="Clear_Click" >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Clear" HorizontalAlignment="Center" VerticalAlignment="Center" />

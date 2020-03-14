@@ -12,25 +12,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BasicGeometricShapes.ExtandWindows
+namespace BasicGeometricShapes.EditShapeWindows
 {
     /// <summary>
-    /// Interaction logic for ElipseWindow.xaml
+    /// Interaction logic for ElipseWindowEdit.xaml
     /// </summary>
-    public partial class ElipseWindow : Window
+    public partial class ElipseWindowEdit : Window
     {
         public static Canvas activeDrawTable;
-        public static Point points;
+        public static Ellipse currentEllipse;
+        public static double getLeft;
+        public static double getTop;
 
-        public ElipseWindow(Point point, Canvas activeCanvas)
+
+        public ElipseWindowEdit(Canvas activeCanvas, Ellipse ellipse)
         {
             InitializeComponent();
-            points = point;
             activeDrawTable = activeCanvas;
+            currentEllipse = ellipse;
+            elipseWidth.Text = currentEllipse.Width.ToString();
+            elipseHeight.Text = currentEllipse.Height.ToString();
+            elipseThickness.Text = currentEllipse.StrokeThickness.ToString();
+            getLeft = Canvas.GetLeft(currentEllipse);
+            getTop = Canvas.GetTop(currentEllipse);
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            activeDrawTable.Children.Remove(currentEllipse);
             Ellipse ellipse = new Ellipse();
             ellipse.Width = Double.Parse(elipseWidth.Text);
             ellipse.Height = Double.Parse(elipseHeight.Text);
@@ -39,8 +49,8 @@ namespace BasicGeometricShapes.ExtandWindows
             var BorderColor = ellipseBroderColor.SelectedColorText;
             ellipse.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
             ellipse.StrokeThickness = Double.Parse(elipseThickness.Text);
-            Canvas.SetTop(ellipse, points.Y);
-            Canvas.SetLeft(ellipse, points.X);
+            Canvas.SetLeft(ellipse, getLeft);
+            Canvas.SetTop(ellipse, getTop);
             activeDrawTable.Children.Add(ellipse);
 
 

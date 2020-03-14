@@ -1,4 +1,5 @@
-﻿using BasicGeometricShapes.ExtandWindows;
+﻿using BasicGeometricShapes.AddShapeWindows;
+using BasicGeometricShapes.EditShapeWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,8 @@ namespace BasicGeometricShapes
             {
                 selectedMenuItem = "Elipse";
                 Point p = Mouse.GetPosition(ActiveCanvas);
-                ElipseWindow elipseWindow = new ElipseWindow(p, ActiveCanvas);
+                Ellipse tmpEl = new Ellipse();
+                ElipseWindow elipseWindow = new ElipseWindow(p, ActiveCanvas); // 0 for add
                 elipseWindow.ShowDialog();
             }
             else if (Rectangle.IsChecked)
@@ -57,7 +59,9 @@ namespace BasicGeometricShapes
             if (e.OriginalSource is Ellipse)//fercera ko zmaj
             {
                 Ellipse clickedEllipsy = (Ellipse)e.OriginalSource;
-                clickedEllipsy.Fill = Brushes.Red;
+                Point p = Mouse.GetPosition(ActiveCanvas);
+                ElipseWindowEdit elipseWindow = new ElipseWindowEdit(ActiveCanvas, clickedEllipsy); // 1 for edit
+                elipseWindow.ShowDialog();
             }
         }
 
@@ -66,6 +70,7 @@ namespace BasicGeometricShapes
             Rectangle.IsChecked = false;
             Polygon.IsChecked = false;
             Image.IsChecked = false;
+            Clear.IsChecked = false;
         }
 
         private void Rectangle_Click(object sender, RoutedEventArgs e)
@@ -73,6 +78,7 @@ namespace BasicGeometricShapes
             Elipse.IsChecked = false;
             Polygon.IsChecked = false;
             Image.IsChecked = false;
+            Clear.IsChecked = false;
         }
 
         private void Polygon_Click(object sender, RoutedEventArgs e)
@@ -80,6 +86,7 @@ namespace BasicGeometricShapes
             Rectangle.IsChecked = false;
             Elipse.IsChecked = false;
             Image.IsChecked = false;
+            Clear.IsChecked = false;
         }
 
         private void Image_Click(object sender, RoutedEventArgs e)
@@ -87,6 +94,16 @@ namespace BasicGeometricShapes
             Rectangle.IsChecked = false;
             Polygon.IsChecked = false;
             Elipse.IsChecked = false;
+            Clear.IsChecked = false;
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            Image.IsChecked = false;
+            Rectangle.IsChecked = false;
+            Polygon.IsChecked = false;
+            Elipse.IsChecked = false;
+            ActiveCanvas.Children.RemoveRange(0, ActiveCanvas.Children.Count);
         }
     }
 }
