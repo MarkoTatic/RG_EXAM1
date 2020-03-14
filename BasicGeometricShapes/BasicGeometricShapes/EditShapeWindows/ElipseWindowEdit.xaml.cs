@@ -33,10 +33,29 @@ namespace BasicGeometricShapes.EditShapeWindows
             elipseWidth.Text = currentEllipse.Width.ToString();
             elipseHeight.Text = currentEllipse.Height.ToString();
             elipseThickness.Text = currentEllipse.StrokeThickness.ToString();
+
+            Brush br = ellipse.Fill;
+            elipseFillColor.SelectedColor = ConvertBrushToColor(br);
+            br = ellipse.Stroke;
+            ellipseBroderColor.SelectedColor = ConvertBrushToColor(br);
             getLeft = Canvas.GetLeft(currentEllipse);
             getTop = Canvas.GetTop(currentEllipse);
         }
 
+        private Color ConvertBrushToColor(Brush br)
+        {
+            byte a = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).A;
+            byte g = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).G;
+            byte r = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).R;
+            byte b = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).B;
+            Color cl = new Color();
+            cl.A = a;
+            cl.R = r;
+            cl.G = g;
+            cl.B = b;
+
+            return cl;
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
