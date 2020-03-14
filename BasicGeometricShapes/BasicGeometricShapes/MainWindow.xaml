@@ -20,14 +20,14 @@
                 <Menu.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFB0FFB7" Offset="0"/>
-                        <GradientStop Color="#FF4BEC61" Offset="1"/>
+                        <GradientStop Color="#FF89FF99" Offset="1"/>
                     </LinearGradientBrush>
                 </Menu.Background>
 
-                <MenuItem x:Name="Elipse" Width="90" IsCheckable="True" ToolTip="Overview of water consumption" Click="Elipse_Click" >
+                <MenuItem x:Name="Elipse" Width="100" IsCheckable="True" ToolTip="Overview of water consumption" Click="Elipse_Click" >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Elipse" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" />
+                            <TextBlock Width="45" Text="Elipse" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" />
                             <Image Width="31" Height="30" Source="Images/elli.png">
                             </Image>
                         </StackPanel>
@@ -36,12 +36,12 @@
                 <MenuItem x:Name="Rectangle" Width="120" IsCheckable="True" ToolTip="Base with all parts of system" Click="Rectangle_Click"  >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Rectangle" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock Width="60" Text="Rectangle" HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <Image Width="39" Height="26" Source="Images/rect.png"/>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="Polygon" Width="100" IsCheckable="True" ToolTip="Graphical presentation of consumption" Click="Polygon_Click">
+                <MenuItem x:Name="Polygon" Width="105" IsCheckable="True" ToolTip="Graphical presentation of consumption" Click="Polygon_Click">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Polygon" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -51,7 +51,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="Image"  Width="80" IsCheckable="True" ToolTip="Daily status change report" Click="Image_Click" >
+                <MenuItem x:Name="Image"  Width="100" IsCheckable="True" ToolTip="Daily status change report" Click="Image_Click" >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Image" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -59,11 +59,27 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="Clear" Width="80" IsCheckable="True" ToolTip="Help and options" Click="Clear_Click" >
+                <MenuItem x:Name="Clear" Width="95" IsCheckable="True" ToolTip="Help and options" Click="Clear_Click" >
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Clear" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock Width="33" Text="Clear" HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <Image Width="42" Height="39" Source="Images\clr.png"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem x:Name="Undo" Width="95" IsCheckable="True" ToolTip="Help and options">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Undo" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Image Width="42" Height="39" Source="Images\undo.png"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem x:Name="Redo" Width="95" IsCheckable="True" ToolTip="Help and options">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Redo" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Image Width="42" Height="39" Source="Images\redo3.png"/>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>

@@ -44,7 +44,6 @@ namespace BasicGeometricShapes.AddShapeWindows
             Canvas.SetLeft(ellipse, points.X);
             activeDrawTable.Children.Add(ellipse);
 
-
             MainWindow.canvasShapes.Add(ellipse);
 
             this.Close();
@@ -53,6 +52,10 @@ namespace BasicGeometricShapes.AddShapeWindows
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Validate()
+        {
         }
     }
 }
