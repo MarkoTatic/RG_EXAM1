@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using BasicGeometricShapes.AddShapeWindows;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,21 +14,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BasicGeometricShapes.AddShapeWindows
+namespace BasicGeometricShapes.EditShapeWindows
 {
     /// <summary>
-    /// Interaction logic for ImageWindow.xaml
+    /// Interaction logic for ImageWindowEdit.xaml
     /// </summary>
-    public partial class ImageWindow : Window
+    public partial class ImageWindowEdit : Window
     {
         public static Canvas activeDrawTable;
-        public static Point points;
-        public static string imgSource;
-        public ImageWindow(Point p, Canvas canvas)
+        public static Image currentImage;
+        public static double getLeft;
+        public static double getTop;
+        public ImageWindowEdit(Canvas activeCanvas, Image image)
         {
             InitializeComponent();
-            points = p;
-            activeDrawTable = canvas;
+            activeDrawTable = activeCanvas;
+            currentImage = image;
+            currentImage.Stretch = image.Stretch;
+            currentImage.Height = image.Height;
+            currentImage.Width = image.Width;
+            ImageWindow.imgSource = image.Source.ToString();
+            getLeft = Canvas.GetLeft(currentImage);
+            getTop = Canvas.GetTop(currentImage);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,21 +43,22 @@ namespace BasicGeometricShapes.AddShapeWindows
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Title = "Open Image";
             dlg.Filter = "All Files|*.*";
-            //PictureBox1.Image = Image.FromFile(dlg.Filename);
             dlg.ShowDialog();
             ImageWindow.imgSource = dlg.FileName.ToString();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            activeDrawTable.Children.Remove(currentImage);
             Image image = new Image();
-            image.Stretch = Stretch.Fill;//da bi lepo pokrio sve velicine slike
-            image.Width = Double.Parse(imageWidth.Text);
-            image.Height = Double.Parse(imageHeight.Text);
             image.Source = new ImageSourceConverter().ConvertFromString(ImageWindow.imgSource) as ImageSource;
-            Canvas.SetTop(image, points.Y);
-            Canvas.SetLeft(image, points.X);
+            image.Height = currentImage.Height;
+            image.Width = currentImage.Width;
+            image.Stretch = currentImage.Stretch;
+            Canvas.SetLeft(image, getLeft);
+            Canvas.SetTop(image, getTop);
             activeDrawTable.Children.Add(image);
+
             this.Close();
         }
 

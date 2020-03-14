@@ -87,7 +87,6 @@ namespace BasicGeometricShapes
             else if (e.OriginalSource is Ellipse)//fercera ko zmaj
             {
                 Ellipse clickedEllipsy = (Ellipse)e.OriginalSource;
-                Point p = Mouse.GetPosition(ActiveCanvas);
                 ElipseWindowEdit elipseWindow = new ElipseWindowEdit(ActiveCanvas, clickedEllipsy); // 1 for edit
                 elipseWindow.ShowDialog();
             }
@@ -96,6 +95,12 @@ namespace BasicGeometricShapes
                 Rectangle clickedRectangle = (Rectangle)e.OriginalSource;
                 RectangleWindowEdit rectangleWindowEdit = new RectangleWindowEdit(ActiveCanvas, clickedRectangle);
                 rectangleWindowEdit.ShowDialog();
+            }
+            else if (e.OriginalSource is Image)
+            {
+                Image clickedImage = (Image)e.OriginalSource;
+                ImageWindowEdit imageWindowEdit = new ImageWindowEdit(ActiveCanvas, clickedImage);
+                imageWindowEdit.ShowDialog();
             }
         }
 

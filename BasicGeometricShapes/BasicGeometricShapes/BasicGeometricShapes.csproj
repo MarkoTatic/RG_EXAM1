@@ -90,6 +90,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EditShapeWindows\ImageWindowEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditShapeWindows\RectangleWindowEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +120,9 @@
     </Compile>
     <Compile Include="EditShapeWindows\ElipseWindowEdit.xaml.cs">
       <DependentUpon>ElipseWindowEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditShapeWindows\ImageWindowEdit.xaml.cs">
+      <DependentUpon>ImageWindowEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditShapeWindows\RectangleWindowEdit.xaml.cs">
       <DependentUpon>RectangleWindowEdit.xaml</DependentUpon>
