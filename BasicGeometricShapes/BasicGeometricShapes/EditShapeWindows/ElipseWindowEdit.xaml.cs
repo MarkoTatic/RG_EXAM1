@@ -19,27 +19,21 @@ namespace BasicGeometricShapes.EditShapeWindows
     /// </summary>
     public partial class ElipseWindowEdit : Window
     {
-        public static Canvas activeDrawTable;
-        public static Ellipse currentEllipse;
-        public static double getLeft;
-        public static double getTop;
+        private Ellipse currentEllipse;//polje ne objekat... ide po referenci dakle...
+        public Ellipse CurrentEllipse { get => currentEllipse; set => currentEllipse = value; }
 
-
-        public ElipseWindowEdit(Canvas activeCanvas, Ellipse ellipse)
+        public ElipseWindowEdit(Ellipse ellipse)
         {
             InitializeComponent();
-            activeDrawTable = activeCanvas;
             currentEllipse = ellipse;
             elipseWidth.Text = currentEllipse.Width.ToString();
             elipseHeight.Text = currentEllipse.Height.ToString();
             elipseThickness.Text = currentEllipse.StrokeThickness.ToString();
 
-            Brush br = ellipse.Fill;
+            Brush br = currentEllipse.Fill;
             elipseFillColor.SelectedColor = ConvertBrushToColor(br);
-            br = ellipse.Stroke;
+            br = currentEllipse.Stroke;
             ellipseBroderColor.SelectedColor = ConvertBrushToColor(br);
-            getLeft = Canvas.GetLeft(currentEllipse);
-            getTop = Canvas.GetTop(currentEllipse);
         }
 
         private Color ConvertBrushToColor(Brush br)
@@ -48,37 +42,29 @@ namespace BasicGeometricShapes.EditShapeWindows
             byte g = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).G;
             byte r = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).R;
             byte b = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).B;
-            Color cl = new Color();
-            cl.A = a;
-            cl.R = r;
-            cl.G = g;
-            cl.B = b;
+            Color color = new Color();
+            color.A = a;
+            color.R = r;
+            color.G = g;
+            color.B = b;
 
-            return cl;
+            return color;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void EditEllipse(object sender, RoutedEventArgs e)
         {
-            activeDrawTable.Children.Remove(currentEllipse);
-            Ellipse ellipse = new Ellipse();
-            ellipse.Width = Double.Parse(elipseWidth.Text);
-            ellipse.Height = Double.Parse(elipseHeight.Text);
+            currentEllipse.Width = Double.Parse(elipseWidth.Text);
+            currentEllipse.Height = Double.Parse(elipseHeight.Text);
             var stringFillColor = elipseFillColor.SelectedColorText;
-            ellipse.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
+            currentEllipse.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
             var BorderColor = ellipseBroderColor.SelectedColorText;
-            ellipse.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
-            ellipse.StrokeThickness = Double.Parse(elipseThickness.Text);
-            Canvas.SetLeft(ellipse, getLeft);
-            Canvas.SetTop(ellipse, getTop);
-            activeDrawTable.Children.Add(ellipse);
-
-
-            MainWindow.canvasShapes.Add(ellipse);
+            currentEllipse.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
+            currentEllipse.StrokeThickness = Double.Parse(elipseThickness.Text);
 
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CloseEdit(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

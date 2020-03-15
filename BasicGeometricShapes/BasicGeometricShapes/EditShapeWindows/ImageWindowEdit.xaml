@@ -9,9 +9,9 @@
         Title="ImageWindowEdit" Height="160" Width="260">
     <Grid>
         <Label Content="Choose image:" HorizontalAlignment="Left" Height="28" Margin="10,22,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.468,-1.328"/>
-        <Button Content="Choose" HorizontalAlignment="Left" Margin="135,22,0,0" VerticalAlignment="Top" Width="98" Height="28" Click="Button_Click"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Height="29" Margin="20,69,0,0" VerticalAlignment="Top" Width="98" Click="Button_Click_1" />
-        <Button Content="Cancel" HorizontalAlignment="Left" Height="29" Margin="135,69,0,0" VerticalAlignment="Top" Width="98" Click="Button_Click_2"/>
+        <Button Content="Choose" HorizontalAlignment="Left" Margin="135,22,0,0" VerticalAlignment="Top" Width="98" Height="28" Click="ChooseDialog"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Height="29" Margin="20,69,0,0" VerticalAlignment="Top" Width="98" Click="EditImage" />
+        <Button Content="Cancel" HorizontalAlignment="Left" Height="29" Margin="135,69,0,0" VerticalAlignment="Top" Width="98" Click="CloseImage"/>
 
     </Grid>
 </Window>

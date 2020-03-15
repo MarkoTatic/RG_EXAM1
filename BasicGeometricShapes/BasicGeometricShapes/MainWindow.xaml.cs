@@ -90,19 +90,19 @@ namespace BasicGeometricShapes
             else if (e.OriginalSource is Ellipse)//fercera ko zmaj
             {
                 Ellipse clickedEllipsy = (Ellipse)e.OriginalSource;
-                ElipseWindowEdit elipseWindow = new ElipseWindowEdit(ActiveCanvas, clickedEllipsy); // 1 for edit
+                ElipseWindowEdit elipseWindow = new ElipseWindowEdit(clickedEllipsy); // 1 for edit
                 elipseWindow.ShowDialog();
             }
             else if (e.OriginalSource is Rectangle)
             {
                 Rectangle clickedRectangle = (Rectangle)e.OriginalSource;
-                RectangleWindowEdit rectangleWindowEdit = new RectangleWindowEdit(ActiveCanvas, clickedRectangle);
+                RectangleWindowEdit rectangleWindowEdit = new RectangleWindowEdit(clickedRectangle);
                 rectangleWindowEdit.ShowDialog();
             }
             else if (e.OriginalSource is Image)
             {
                 Image clickedImage = (Image)e.OriginalSource;
-                ImageWindowEdit imageWindowEdit = new ImageWindowEdit(ActiveCanvas, clickedImage);
+                ImageWindowEdit imageWindowEdit = new ImageWindowEdit(clickedImage);
                 imageWindowEdit.ShowDialog();
             }
         }

@@ -19,49 +19,38 @@ namespace BasicGeometricShapes.EditShapeWindows
     /// </summary>
     public partial class RectangleWindowEdit : Window
     {
-        public static Canvas activeDrawTable;
-        public static Rectangle currentRectangle;
-        public static double getLeft;
-        public static double getTop;
+        private Rectangle currentRectangle;
+        public Rectangle CurrentRectangle { get => currentRectangle; set => currentRectangle = value; }
 
-        public RectangleWindowEdit(Canvas activeCanvas, Rectangle rectangle)
+        public RectangleWindowEdit(Rectangle rectangle)
         {
             InitializeComponent();
-            activeDrawTable = activeCanvas;
             currentRectangle = rectangle;
             rectangleWidth.Text = currentRectangle.Width.ToString();
             rectangleHeight.Text = currentRectangle.Height.ToString();
             rectangleThickness.Text = currentRectangle.StrokeThickness.ToString();
 
-            Brush br = rectangle.Fill;
+            Brush br = currentRectangle.Fill;
             rectangleFillColor.SelectedColor = ConvertBrushToColor(br);
-            br = rectangle.Stroke;
+            br = currentRectangle.Stroke;
             rectangleBroderColor.SelectedColor = ConvertBrushToColor(br);
-            getLeft = Canvas.GetLeft(currentRectangle);
-            getTop = Canvas.GetTop(currentRectangle);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+       
+        private void EditRectangle(object sender, RoutedEventArgs e)
         {
-            activeDrawTable.Children.Remove(currentRectangle);
-            Rectangle rectangle = new Rectangle();
-            rectangle.Width = Double.Parse(rectangleWidth.Text);
-            rectangle.Height = Double.Parse(rectangleHeight.Text);
+            currentRectangle.Width = Double.Parse(rectangleWidth.Text);
+            currentRectangle.Height = Double.Parse(rectangleHeight.Text);
             var stringFillColor = rectangleFillColor.SelectedColorText;
-            rectangle.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
+            currentRectangle.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
             var BorderColor = rectangleBroderColor.SelectedColorText;
-            rectangle.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
-            rectangle.StrokeThickness = Double.Parse(rectangleThickness.Text);
-            Canvas.SetLeft(rectangle, getLeft);
-            Canvas.SetTop(rectangle, getTop);
-            activeDrawTable.Children.Add(rectangle);
-
-            MainWindow.canvasShapes.Add(rectangle);
+            currentRectangle.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
+            currentRectangle.StrokeThickness = Double.Parse(rectangleThickness.Text);
 
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CloseEdit(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -72,13 +61,13 @@ namespace BasicGeometricShapes.EditShapeWindows
             byte g = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).G;
             byte r = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).R;
             byte b = ((Color)br.GetValue(SolidColorBrush.ColorProperty)).B;
-            Color cl = new Color();
-            cl.A = a;
-            cl.R = r;
-            cl.G = g;
-            cl.B = b;
+            Color color = new Color();
+            color.A = a;
+            color.R = r;
+            color.G = g;
+            color.B = b;
 
-            return cl;
+            return color;
         }
     }
 }
