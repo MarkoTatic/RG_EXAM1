@@ -22,7 +22,6 @@ namespace BasicGeometricShapes
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static string selectedMenuItem = "";
         public static List<Shape> canvasShapes;
         public static List<Point> polygonPoints;
         public static List<Ellipse> tempPolyDots;
@@ -34,60 +33,56 @@ namespace BasicGeometricShapes
             tempPolyDots = new List<Ellipse>();
         }
 
-        private void ActiveCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ActiveCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (Elipse.IsChecked)
             {
-                selectedMenuItem = "Elipse";
                 Point p = Mouse.GetPosition(ActiveCanvas);
-                ElipseWindow elipseWindow = new ElipseWindow(p, ActiveCanvas); // 0 for add
+                ElipseWindow elipseWindow = new ElipseWindow(p, ActiveCanvas);
                 elipseWindow.ShowDialog();
             }
             else if (Rectangle.IsChecked)
             {
-                selectedMenuItem = "Rectangle";
                 Point p = Mouse.GetPosition(ActiveCanvas);
                 RectangleWindow rectangleWindow = new RectangleWindow(p, ActiveCanvas);
                 rectangleWindow.ShowDialog();
             }
             else if (Polygon.IsChecked)
             {
-                selectedMenuItem = "Polygon";
                 Point p = Mouse.GetPosition(ActiveCanvas);
                 polygonPoints.Add(p);
-
-                Ellipse ellipse = new Ellipse();
-                ellipse.Width = 5;
-                ellipse.Height = 5;
-                ellipse.Fill = Brushes.LightSeaGreen;
-                ellipse.Stroke = Brushes.LightSeaGreen;
-                ellipse.StrokeThickness = 1;
-                Canvas.SetTop(ellipse, p.Y);
-                Canvas.SetLeft(ellipse, p.X);
-                ActiveCanvas.Children.Add(ellipse);
-                tempPolyDots.Add(ellipse);
+                CreateEllipseDotForPolygon(p);   
             }
             else if (Image.IsChecked)
             {
-                selectedMenuItem = "Image";
                 Point p = Mouse.GetPosition(ActiveCanvas);
                 ImageWindow imageWindow = new ImageWindow(p, ActiveCanvas);
                 imageWindow.ShowDialog();
             }          
         }
 
-        private void ActiveCanvas_MouseLeftButtonDown2(object sender, MouseButtonEventArgs e)
+        private void CreateEllipseDotForPolygon(Point p)
         {
-            if (Polygon.IsChecked && polygonPoints.Count > 0)//u slucaju da je stavljena bar jedna tacka na Canvas i klikne se bilo gde teme polygona i ako je polygon aktivan u meniju napravi polygon
+            Ellipse ellipse = new Ellipse();
+            ellipse.Width = 5;
+            ellipse.Height = 5;
+            ellipse.Fill = Brushes.LightSeaGreen;
+            ellipse.Stroke = Brushes.LightSeaGreen;
+            ellipse.StrokeThickness = 1;
+            Canvas.SetTop(ellipse, p.Y);
+            Canvas.SetLeft(ellipse, p.X);
+            ActiveCanvas.Children.Add(ellipse);
+            tempPolyDots.Add(ellipse);
+        }
+
+        private void ActiveCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (polygonPoints.Count > 0)//u slucaju da je stavljena bar jedna tacka na Canvas i klikne se bilo gde teme polygona i ako je polygon aktivan u meniju napravi polygon !!!!!!!![mozda da bude aktivno u meniju ono sto ...]
             {
                 PolygonWindow polygonWindow = new PolygonWindow(ActiveCanvas);
                 polygonWindow.ShowDialog();
             }
-            else if (e.OriginalSource is Polygon)//za edit polygona
-            {
-
-            }
-            else if (e.OriginalSource is Ellipse)//fercera ko zmaj
+            else if (e.OriginalSource is Ellipse)
             {
                 Ellipse clickedEllipsy = (Ellipse)e.OriginalSource;
                 ElipseWindowEdit elipseWindow = new ElipseWindowEdit(clickedEllipsy); // 1 for edit
@@ -107,15 +102,14 @@ namespace BasicGeometricShapes
             }
         }
 
-
-        
-
         private void Elipse_Click(object sender, RoutedEventArgs e)
         {
             Rectangle.IsChecked = false;
             Polygon.IsChecked = false;
             Image.IsChecked = false;
             Clear.IsChecked = false;
+            Undo.IsChecked = false;
+            Redo.IsChecked = false;
         }
 
         private void Rectangle_Click(object sender, RoutedEventArgs e)
@@ -124,6 +118,8 @@ namespace BasicGeometricShapes
             Polygon.IsChecked = false;
             Image.IsChecked = false;
             Clear.IsChecked = false;
+            Undo.IsChecked = false;
+            Redo.IsChecked = false;
         }
 
         private void Polygon_Click(object sender, RoutedEventArgs e)
@@ -132,6 +128,8 @@ namespace BasicGeometricShapes
             Elipse.IsChecked = false;
             Image.IsChecked = false;
             Clear.IsChecked = false;
+            Undo.IsChecked = false;
+            Redo.IsChecked = false;
         }
 
         private void Image_Click(object sender, RoutedEventArgs e)
@@ -140,6 +138,8 @@ namespace BasicGeometricShapes
             Polygon.IsChecked = false;
             Elipse.IsChecked = false;
             Clear.IsChecked = false;
+            Undo.IsChecked = false;
+            Redo.IsChecked = false;
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -148,9 +148,29 @@ namespace BasicGeometricShapes
             Rectangle.IsChecked = false;
             Polygon.IsChecked = false;
             Elipse.IsChecked = false;
+            Undo.IsChecked = false;
+            Redo.IsChecked = false;
             ActiveCanvas.Children.RemoveRange(0, ActiveCanvas.Children.Count);
         }
 
-        
+        private void Undo_Click(object sender, RoutedEventArgs e)
+        {
+            Image.IsChecked = false;
+            Rectangle.IsChecked = false;
+            Polygon.IsChecked = false;
+            Elipse.IsChecked = false;
+            Redo.IsChecked = false;
+            Clear.IsChecked = false;
+        }
+
+        private void Redo_Click(object sender, RoutedEventArgs e)
+        {
+            Image.IsChecked = false;
+            Rectangle.IsChecked = false;
+            Polygon.IsChecked = false;
+            Elipse.IsChecked = false;
+            Undo.IsChecked = false;
+            Clear.IsChecked = false;
+        }
     }
 }

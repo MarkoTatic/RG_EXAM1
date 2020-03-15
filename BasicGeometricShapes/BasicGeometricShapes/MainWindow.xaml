@@ -67,7 +67,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="Undo" Width="95" IsCheckable="True" ToolTip="Help and options">
+                <MenuItem x:Name="Undo" Width="95" IsCheckable="True" ToolTip="Help and options" Click="Undo_Click">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Undo" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -75,7 +75,7 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-                <MenuItem x:Name="Redo" Width="95" IsCheckable="True" ToolTip="Help and options">
+                <MenuItem x:Name="Redo" Width="95" IsCheckable="True" ToolTip="Help and options" Click="Redo_Click">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Redo" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -86,7 +86,7 @@
             </Menu>
         </DockPanel>
         <StackPanel Grid.Row="2" >
-            <Canvas x:Name="ActiveCanvas"  Background="#FFD7F7DA" MouseRightButtonDown="ActiveCanvas_MouseLeftButtonDown" PreviewMouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown2" Height="340" Grid.Row="2" Width="710" UseLayoutRounding="False" ClipToBounds="True">
+            <Canvas x:Name="ActiveCanvas"  Background="#FFD7F7DA" MouseRightButtonDown="ActiveCanvas_MouseRightButtonDown" PreviewMouseLeftButtonDown="ActiveCanvas_MouseLeftButtonDown" Height="340" Grid.Row="2" Width="710" UseLayoutRounding="False" ClipToBounds="True">
                 <!--<Ellipse Width="200" Canvas.Left="100" Height="500" Fill="Yellow"></Ellipse>-->
                 <!--<Polygon Points="20 20, 30 100, 50 10, 155 53, 153 111, 1 35, 353 111" Fill="AliceBlue" FillRule="Nonzero"></Polygon>-->
             </Canvas>
