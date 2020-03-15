@@ -19,8 +19,11 @@ namespace BasicGeometricShapes.AddShapeWindows
     /// </summary>
     public partial class ElipseWindow : Window
     {
-        public static Canvas activeDrawTable;
-        public static Point points;
+        private Canvas activeDrawTable;
+        private Point points;
+
+        public Canvas ActiveDrawTable { get => activeDrawTable; set => activeDrawTable = value; }
+        public Point Points { get => points; set => points = value; }
 
         public ElipseWindow(Point point, Canvas activeCanvas)
         {
@@ -30,7 +33,7 @@ namespace BasicGeometricShapes.AddShapeWindows
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DrawEllipse(object sender, RoutedEventArgs e)
         {
             Ellipse ellipse = new Ellipse();
             ellipse.Width = Double.Parse(elipseWidth.Text);
@@ -42,14 +45,14 @@ namespace BasicGeometricShapes.AddShapeWindows
             ellipse.StrokeThickness = Double.Parse(elipseThickness.Text);
             Canvas.SetTop(ellipse, points.Y);
             Canvas.SetLeft(ellipse, points.X);
+            
             activeDrawTable.Children.Add(ellipse);
-
             MainWindow.canvasShapes.Add(ellipse);
 
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CloseDraw(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

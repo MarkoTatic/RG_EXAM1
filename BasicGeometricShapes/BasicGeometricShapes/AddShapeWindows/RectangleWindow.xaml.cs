@@ -19,8 +19,10 @@ namespace BasicGeometricShapes.AddShapeWindows
     /// </summary>
     public partial class RectangleWindow : Window
     {
-        public static Canvas activeDrawTable;
-        public static Point points;
+        private Canvas activeDrawTable;
+        private Point points;
+        public Canvas ActiveDrawTable { get => activeDrawTable; set => activeDrawTable = value; }
+        public Point Points { get => points; set => points = value; }
         public RectangleWindow(Point point, Canvas activeCanvas)
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace BasicGeometricShapes.AddShapeWindows
             activeDrawTable = activeCanvas;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DrawRectangle(object sender, RoutedEventArgs e)
         {
             Rectangle rectangle = new Rectangle();
             rectangle.Width = Double.Parse(rectangleWidth.Text);
@@ -40,13 +42,14 @@ namespace BasicGeometricShapes.AddShapeWindows
             rectangle.StrokeThickness = Double.Parse(rectangleThickness.Text);
             Canvas.SetTop(rectangle, points.Y);
             Canvas.SetLeft(rectangle, points.X);
+
             activeDrawTable.Children.Add(rectangle);
             MainWindow.canvasShapes.Add(rectangle);
 
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CloseDraw(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

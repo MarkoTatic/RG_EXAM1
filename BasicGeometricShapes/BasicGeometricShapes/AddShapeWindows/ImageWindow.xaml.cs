@@ -20,9 +20,12 @@ namespace BasicGeometricShapes.AddShapeWindows
     /// </summary>
     public partial class ImageWindow : Window
     {
-        public static Canvas activeDrawTable;
-        public static Point points;
         public static string imgSource;
+        private Canvas activeDrawTable;
+        private Point points;
+        public Canvas ActiveDrawTable { get => activeDrawTable; set => activeDrawTable = value; }
+        public Point Points { get => points; set => points = value; }
+
         public ImageWindow(Point p, Canvas canvas)
         {
             InitializeComponent();
@@ -30,17 +33,16 @@ namespace BasicGeometricShapes.AddShapeWindows
             activeDrawTable = canvas;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ChooseDialog(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Title = "Open Image";
-            dlg.Filter = "All Files|*.*";
-            //PictureBox1.Image = Image.FromFile(dlg.Filename);
-            dlg.ShowDialog();
-            ImageWindow.imgSource = dlg.FileName.ToString();
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Open Image";
+            dialog.Filter = "All Files|*.*";
+            dialog.ShowDialog();
+            ImageWindow.imgSource = dialog.FileName.ToString();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void DrawImage(object sender, RoutedEventArgs e)
         {
             Image image = new Image();
             image.Stretch = Stretch.Fill;//da bi lepo pokrio sve velicine slike
@@ -50,10 +52,11 @@ namespace BasicGeometricShapes.AddShapeWindows
             Canvas.SetTop(image, points.Y);
             Canvas.SetLeft(image, points.X);
             activeDrawTable.Children.Add(image);
+
             this.Close();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void CloseDraw(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

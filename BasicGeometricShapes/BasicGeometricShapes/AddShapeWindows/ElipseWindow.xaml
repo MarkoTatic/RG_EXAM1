@@ -16,8 +16,8 @@
         <TextBox x:Name="elipseWidth" HorizontalAlignment="Left" Height="28" Margin="145,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
         <TextBox x:Name="elipseHeight" HorizontalAlignment="Left" Height="28" Margin="145,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
         <TextBox x:Name="elipseThickness" HorizontalAlignment="Left" Height="28" Margin="144,178,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
-        <Button Content="Draw" HorizontalAlignment="Left" Height="28" Margin="24,225,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="158,225,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_1"/>
+        <Button Content="Draw" HorizontalAlignment="Left" Height="28" Margin="24,225,0,0" VerticalAlignment="Top" Width="116" Click="DrawEllipse"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="158,225,0,0" VerticalAlignment="Top" Width="116" Click="CloseDraw"/>
         <xctk:ColorPicker x:Name="elipseFillColor" HorizontalAlignment="Left" Height="23" Margin="145,96,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
         <xctk:ColorPicker x:Name="ellipseBroderColor" HorizontalAlignment="Left" Height="28" Margin="144,135,0,0" VerticalAlignment="Top" Width="139"/>
         <Label Content="Label" FontSize="8" HorizontalAlignment="Left" Height="19" Margin="145,34,0,0" VerticalAlignment="Top" Width="140"/>

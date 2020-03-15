@@ -19,16 +19,19 @@ namespace BasicGeometricShapes.AddShapeWindows
     /// </summary>
     public partial class PolygonWindow : Window
     {
-        public static Canvas activeDrawTable;
+        private Canvas activeDrawTable;
+        public Canvas ActiveDrawTable { get => activeDrawTable; set => activeDrawTable = value; }
+
         public PolygonWindow(Canvas canvas)
         {
             InitializeComponent();
             activeDrawTable = canvas;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DrawPolygon(object sender, RoutedEventArgs e)
         {
             Polygon polygon = new Polygon();
+
             foreach (Point point in MainWindow.polygonPoints)
             {
                 polygon.Points.Add(point);
@@ -42,18 +45,19 @@ namespace BasicGeometricShapes.AddShapeWindows
             polygon.FillRule = FillRule.Nonzero;//da preklapa lepo
             
             activeDrawTable.Children.Add(polygon);
-
             MainWindow.canvasShapes.Add(polygon);
+
             MainWindow.polygonPoints.Clear();
             foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)//fejk pravljenje da dotovi nestanu... jer je referenca moze
             {
                 ellipseDot.Fill = Brushes.Red;
                 ellipseDot.Stroke = Brushes.Red;
             }
+
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void CloseDraw(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
