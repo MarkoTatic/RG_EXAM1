@@ -45,6 +45,11 @@ namespace BasicGeometricShapes.AddShapeWindows
 
             MainWindow.canvasShapes.Add(polygon);
             MainWindow.polygonPoints.Clear();
+            foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)//fejk pravljenje da dotovi nestanu... jer je referenca moze
+            {
+                ellipseDot.Fill = Brushes.Red;
+                ellipseDot.Stroke = Brushes.Red;
+            }
             this.Close();
         }
 

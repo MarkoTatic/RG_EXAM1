@@ -25,11 +25,13 @@ namespace BasicGeometricShapes
         private static string selectedMenuItem = "";
         public static List<Shape> canvasShapes;
         public static List<Point> polygonPoints;
+        public static List<Ellipse> tempPolyDots;
         public MainWindow()
         {
             InitializeComponent();
             canvasShapes = new List<Shape>();
             polygonPoints = new List<Point>();
+            tempPolyDots = new List<Ellipse>();
         }
 
         private void ActiveCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -63,6 +65,7 @@ namespace BasicGeometricShapes
                 Canvas.SetTop(ellipse, p.Y);
                 Canvas.SetLeft(ellipse, p.X);
                 ActiveCanvas.Children.Add(ellipse);
+                tempPolyDots.Add(ellipse);
             }
             else if (Image.IsChecked)
             {
