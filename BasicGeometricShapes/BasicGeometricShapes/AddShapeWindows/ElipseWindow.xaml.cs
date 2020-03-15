@@ -48,6 +48,7 @@ namespace BasicGeometricShapes.AddShapeWindows
             
             activeDrawTable.Children.Add(ellipse);
             MainWindow.canvasShapes.Add(ellipse);
+            MainWindow.shapeDict.Add(activeDrawTable.Children.IndexOf(ellipse), ellipse);
 
             this.Close();
         }

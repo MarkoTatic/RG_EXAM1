@@ -25,12 +25,14 @@ namespace BasicGeometricShapes
         public static List<Shape> canvasShapes;
         public static List<Point> polygonPoints;
         public static List<Ellipse> tempPolyDots;
+        public static Dictionary<int, Shape> shapeDict;
         public MainWindow()
         {
             InitializeComponent();
             canvasShapes = new List<Shape>();
             polygonPoints = new List<Point>();
             tempPolyDots = new List<Ellipse>();
+            shapeDict = new Dictionary<int, Shape>();//key je ustvari index u canvasu
         }
 
         private void ActiveCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
