@@ -26,6 +26,7 @@ namespace BasicGeometricShapes
         public static List<Point> polygonPoints;
         public static List<Ellipse> tempPolyDots;
         public static Dictionary<int, Shape> shapeDict;
+        public static Stack<UIElement> removedShapesForRedo;
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace BasicGeometricShapes
             polygonPoints = new List<Point>();
             tempPolyDots = new List<Ellipse>();
             shapeDict = new Dictionary<int, Shape>();//key je ustvari index u canvasu
+            removedShapesForRedo = new Stack<UIElement>();
         }
 
         private void ActiveCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -169,6 +171,13 @@ namespace BasicGeometricShapes
             Elipse.IsChecked = false;
             Redo.IsChecked = false;
             Clear.IsChecked = false;
+            Undo.IsChecked = false;
+
+            if (ActiveCanvas.Children.Count > 0)
+            {
+                removedShapesForRedo.Push(ActiveCanvas.Children[ActiveCanvas.Children.Count - 1]);
+                ActiveCanvas.Children.RemoveAt(ActiveCanvas.Children.Count - 1);
+            }
         }
 
         private void Redo_Click(object sender, RoutedEventArgs e)
@@ -179,6 +188,10 @@ namespace BasicGeometricShapes
             Elipse.IsChecked = false;
             Undo.IsChecked = false;
             Clear.IsChecked = false;
+            Redo.IsChecked = false;
+
+            if (removedShapesForRedo.Count > 0)
+                ActiveCanvas.Children.Add(removedShapesForRedo.Pop());
         }
 
         private void ClearPolygon()
