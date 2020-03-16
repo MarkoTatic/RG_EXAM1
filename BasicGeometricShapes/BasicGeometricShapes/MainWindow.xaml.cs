@@ -26,7 +26,7 @@ namespace BasicGeometricShapes
         public static List<Point> polygonPoints;
         public static List<Ellipse> tempPolyDots;
         public static Stack<UIElement> removedShapesForRedo;
-        public static Stack<UIElement> undoClearFunction;
+        public static Stack<List<UIElement>> undoClearFunction;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace BasicGeometricShapes
             polygonPoints = new List<Point>();
             tempPolyDots = new List<Ellipse>();
             removedShapesForRedo = new Stack<UIElement>();
-            undoClearFunction = new Stack<UIElement>();
+            undoClearFunction = new Stack<List<UIElement>>();
         }
 
         private void ActiveCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -160,11 +160,14 @@ namespace BasicGeometricShapes
             Elipse.IsChecked = false;
             Undo.IsChecked = false;
             Redo.IsChecked = false;
-           
+
+            var listOFClearedObj = new List<UIElement>();
             foreach (UIElement element in ActiveCanvas.Children)
             {
-                undoClearFunction.Push(element);
+                listOFClearedObj.Add(element);
             }
+            undoClearFunction.Push(listOFClearedObj);
+
             ActiveCanvas.Children.Clear();
         }
 
@@ -183,13 +186,16 @@ namespace BasicGeometricShapes
                 removedShapesForRedo.Push(ActiveCanvas.Children[ActiveCanvas.Children.Count - 1]);
                 ActiveCanvas.Children.RemoveAt(ActiveCanvas.Children.Count - 1);
             }
-            else
+            else//ako je clear bio
             {
-                foreach (UIElement element in MainWindow.undoClearFunction)
+                var undoIfClear = new List<UIElement>();
+                if (MainWindow.undoClearFunction.Count > 0)
+                    undoIfClear = MainWindow.undoClearFunction.Pop();
+                
+                foreach (UIElement element in undoIfClear)
                 {
                     ActiveCanvas.Children.Add(element);
                 }
-                MainWindow.undoClearFunction.Clear();
             }
         }
 
@@ -205,16 +211,15 @@ namespace BasicGeometricShapes
 
             if (removedShapesForRedo.Count > 0)
                 ActiveCanvas.Children.Add(removedShapesForRedo.Pop());
+            else//ako je clear bio da redo na staro
+            {
+
+            }
         }
 
         private void ClearPolygon()
         {
             MainWindow.polygonPoints.Clear();
-
-            foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)//fejk pravljenje da dotovi nestanu... jer je referenca moze
-            {
-                ActiveCanvas.Children.Remove(ellipseDot);
-            }
         }
     }
 }
