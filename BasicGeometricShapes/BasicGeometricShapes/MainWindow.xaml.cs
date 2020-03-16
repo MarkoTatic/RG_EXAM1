@@ -112,6 +112,8 @@ namespace BasicGeometricShapes
             Clear.IsChecked = false;
             Undo.IsChecked = false;
             Redo.IsChecked = false;
+
+            ClearPolygon();
         }
 
         private void Rectangle_Click(object sender, RoutedEventArgs e)
@@ -122,6 +124,8 @@ namespace BasicGeometricShapes
             Clear.IsChecked = false;
             Undo.IsChecked = false;
             Redo.IsChecked = false;
+
+            ClearPolygon();
         }
 
         private void Polygon_Click(object sender, RoutedEventArgs e)
@@ -142,6 +146,8 @@ namespace BasicGeometricShapes
             Clear.IsChecked = false;
             Undo.IsChecked = false;
             Redo.IsChecked = false;
+
+            ClearPolygon();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -173,6 +179,15 @@ namespace BasicGeometricShapes
             Elipse.IsChecked = false;
             Undo.IsChecked = false;
             Clear.IsChecked = false;
+        }
+
+        private void ClearPolygon()
+        {
+            MainWindow.polygonPoints.Clear();
+            foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)//fejk pravljenje da dotovi nestanu... jer je referenca moze
+            {
+                ActiveCanvas.Children.Remove(ellipseDot);
+            }
         }
     }
 }

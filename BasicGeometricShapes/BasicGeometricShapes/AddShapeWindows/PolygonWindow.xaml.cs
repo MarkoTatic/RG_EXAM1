@@ -50,6 +50,7 @@ namespace BasicGeometricShapes.AddShapeWindows
             MainWindow.polygonPoints.Clear();
             foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)//fejk pravljenje da dotovi nestanu... jer je referenca moze
             {
+                activeDrawTable.Children.Remove(ellipseDot);
                 ellipseDot.Fill = Brushes.Red;
                 ellipseDot.Stroke = Brushes.Red;
             }
