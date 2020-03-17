@@ -20,20 +20,20 @@
             <Label Content="Fill Color:" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" VerticalAlignment="Top" Width="68"/>
             <Label Content="Border Color:" HorizontalAlignment="Left" Height="28" Margin="10,20,0,0" VerticalAlignment="Top" Width="82"/>
             <Label Content="Border Thickness:" HorizontalAlignment="Left" Height="26" Margin="10,20,0,0" VerticalAlignment="Top" Width="121"/>
-            <Button Content="Draw" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="10,20,0,0" VerticalAlignment="Top" Width="90" Click="DrawRectangle"/>
+            <Button Content="Draw" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="10,20,0,0" VerticalAlignment="Top" Width="110" Click="DrawRectangle"/>
         </StackPanel>
         <StackPanel Margin="0,0,165.6,0.4">
-            <TextBox x:Name="rectangleWidth" HorizontalAlignment="Left" Height="28" Margin="115,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
-            <Label Content="Label" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,0,0,0" VerticalAlignment="Top" Width="140"/>
-            <TextBox x:Name="rectangleHeight" HorizontalAlignment="Left" Height="28" Margin="115, 0, 0, 0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
-            <Label Content="Label" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <TextBox x:Name="rectangleWidth" HorizontalAlignment="Left" PreviewTextInput="NumberValidationTextBox" Height="28" Margin="115,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+            <Label x:Name="labelW" Content="" FontWeight="Bold" Foreground="Red" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <TextBox x:Name="rectangleHeight" HorizontalAlignment="Left" PreviewTextInput="NumberValidationTextBox" Height="28" Margin="115, 0, 0, 0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+            <Label x:Name="labelH" Content="" FontWeight="Bold" Foreground="Red" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,0,0,0" VerticalAlignment="Top" Width="140"/>
             <xctk:ColorPicker x:Name="rectangleFillColor" HorizontalAlignment="Left" Height="25" Margin="115,0,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
-            <Label Content="Label" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,1,0,0" VerticalAlignment="Top" Width="140"/>
+            <Label x:Name="labelFC" Content="" FontWeight="Bold" Foreground="Red" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,1,0,0" VerticalAlignment="Top" Width="140"/>
             <xctk:ColorPicker x:Name="rectangleBroderColor" HorizontalAlignment="Left" Height="25" Margin="115,0,0,0" VerticalAlignment="Top" Width="139"/>
-            <Label Content="Label" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,0,0,0" VerticalAlignment="Top" Width="140"/>
-            <TextBox x:Name="rectangleThickness" HorizontalAlignment="Left" Height="28" Margin="115,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
-            <Label Content="Label" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,0,0,0" VerticalAlignment="Top" Width="140"/>
-            <Button Content="Cancel" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="165,0,0,0" VerticalAlignment="Top" Width="90" Click="CloseDraw"/>
+            <Label x:Name="labelBC" Content="" FontWeight="Bold" Foreground="Red" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <TextBox x:Name="rectangleThickness" HorizontalAlignment="Left" PreviewTextInput="NumberValidationTextBox" Height="28" Margin="115,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+            <Label x:Name="labelThk" Content="" FontWeight="Bold" Foreground="Red" FontSize="9" HorizontalAlignment="Left" Height="20" Margin="115,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <Button Content="Cancel" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="145,0,0,0" VerticalAlignment="Top" Width="110" Click="CloseDraw"/>
         </StackPanel>
     </Grid>
 </Window>
