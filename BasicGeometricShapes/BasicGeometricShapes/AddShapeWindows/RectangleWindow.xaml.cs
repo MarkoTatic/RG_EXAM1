@@ -58,9 +58,9 @@ namespace BasicGeometricShapes.AddShapeWindows
             bool isValid = true;
             bool valid_WorH = true;
 
-            if (rectangleWidth.Text.Trim().Equals(String.Empty))
+            if (rectangleWidth.Text.Trim().Equals(String.Empty) || rectangleWidth.Text.Trim().Contains(" "))
             {
-                labelW.Content = "Ellipse must have a width.";
+                labelW.Content = "Rect. must have a width.";
                 rectangleWidth.BorderBrush = Brushes.Red;
 
                 valid_WorH = false;
@@ -71,9 +71,9 @@ namespace BasicGeometricShapes.AddShapeWindows
                 labelW.Content = String.Empty;
                 rectangleWidth.BorderBrush = Brushes.Gray;
             }
-            if (rectangleHeight.Text.Trim().Equals(String.Empty))
+            if (rectangleHeight.Text.Trim().Equals(String.Empty) || rectangleHeight.Text.Trim().Contains(" "))
             {
-                labelH.Content = "Ellipse must have a height.";
+                labelH.Content = "Rect. must have a height.";
                 rectangleHeight.BorderBrush = Brushes.Red;
 
                 valid_WorH = false;
@@ -84,7 +84,7 @@ namespace BasicGeometricShapes.AddShapeWindows
                 labelH.Content = String.Empty;
                 rectangleHeight.BorderBrush = Brushes.Gray;
             }
-            if (rectangleThickness.Text.Trim().Equals(String.Empty))
+            if (rectangleThickness.Text.Trim().Equals(String.Empty) || rectangleThickness.Text.Trim().Contains(" "))
             {
                 labelThk.Content = "Must have a border thickness.";
                 rectangleThickness.BorderBrush = Brushes.Red;

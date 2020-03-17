@@ -66,7 +66,7 @@ namespace BasicGeometricShapes.AddShapeWindows
             bool isValid = true;
             bool valid_WorH = true;
 
-            if (elipseWidth.Text.Trim().Equals(String.Empty))
+            if (elipseWidth.Text.Trim().Equals(String.Empty) || elipseWidth.Text.Trim().Contains(" "))
             {
                 labelWElipse.Content = "Ellipse must have a width.";
                 elipseWidth.BorderBrush = Brushes.Red;
@@ -79,7 +79,7 @@ namespace BasicGeometricShapes.AddShapeWindows
                 labelWElipse.Content = String.Empty;
                 elipseWidth.BorderBrush = Brushes.Gray;
             }
-            if (elipseHeight.Text.Trim().Equals(String.Empty))
+            if (elipseHeight.Text.Trim().Equals(String.Empty) || elipseHeight.Text.Trim().Contains(" "))
             {
                 labelHElipse.Content = "Ellipse must have a height.";
                 elipseHeight.BorderBrush = Brushes.Red;
@@ -92,7 +92,7 @@ namespace BasicGeometricShapes.AddShapeWindows
                 labelHElipse.Content = String.Empty;
                 elipseHeight.BorderBrush = Brushes.Gray;
             }
-            if (elipseThickness.Text.Trim().Equals(String.Empty))
+            if (elipseThickness.Text.Trim().Equals(String.Empty) || elipseThickness.Text.Trim().Contains(" "))
             {
                 labelThicknessElipse.Content = "Must have a border thickness.";
                 elipseThickness.BorderBrush = Brushes.Red;

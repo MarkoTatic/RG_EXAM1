@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +32,7 @@ namespace BasicGeometricShapes.AddShapeWindows
             InitializeComponent();
             points = p;
             activeDrawTable = canvas;
+            imgSource = "";
         }
 
         private void ChooseDialog(object sender, RoutedEventArgs e)
@@ -44,21 +46,75 @@ namespace BasicGeometricShapes.AddShapeWindows
 
         private void DrawImage(object sender, RoutedEventArgs e)
         {
-            Image image = new Image();
-            image.Stretch = Stretch.Fill;//da bi lepo pokrio sve velicine slike
-            image.Width = Double.Parse(imageWidth.Text);
-            image.Height = Double.Parse(imageHeight.Text);
-            image.Source = new ImageSourceConverter().ConvertFromString(ImageWindow.imgSource) as ImageSource;
-            Canvas.SetTop(image, points.Y);
-            Canvas.SetLeft(image, points.X);
-            activeDrawTable.Children.Add(image);
+            if (IsValidate())
+            {
+                Image image = new Image();
+                image.Stretch = Stretch.Fill;//da bi lepo pokrio sve velicine slike
+                image.Width = Double.Parse(imageWidth.Text);
+                image.Height = Double.Parse(imageHeight.Text);
+                image.Source = new ImageSourceConverter().ConvertFromString(ImageWindow.imgSource) as ImageSource;
+                Canvas.SetTop(image, points.Y);
+                Canvas.SetLeft(image, points.X);
+                activeDrawTable.Children.Add(image);
 
-            this.Close();
+                this.Close();
+            }
+        }
+
+        private bool IsValidate()
+        {
+            bool isValid = true;
+
+            if (imageWidth.Text.Trim().Equals(String.Empty) || imageWidth.Text.Trim().Contains(" "))
+            {
+                labelW.Content = "Image must have a width.";
+                imageWidth.BorderBrush = Brushes.Red;
+
+                isValid = false;
+            }
+            else
+            {
+                labelW.Content = String.Empty;
+                imageWidth.BorderBrush = Brushes.Gray;
+            }
+            if (imageHeight.Text.Trim().Equals(String.Empty) || imageHeight.Text.Trim().Contains(" "))
+            {
+                labelH.Content = "Image must have a height.";
+                imageHeight.BorderBrush = Brushes.Red;
+
+                isValid = false;
+            }
+            else
+            {
+                labelH.Content = String.Empty;
+                imageHeight.BorderBrush = Brushes.Gray;
+            }
+            if (imgSource.Trim().Equals(String.Empty))
+            {
+                labelChoose.Content = "You must choose image.";
+                chooseButton.BorderBrush = Brushes.Red;
+
+                isValid = false;
+            }
+            else
+            {
+                labelChoose.Content = "";
+                chooseButton.BorderBrush = Brushes.Gray;
+            }
+            
+            return isValid;
         }
 
         private void CloseDraw(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
     }
 }
