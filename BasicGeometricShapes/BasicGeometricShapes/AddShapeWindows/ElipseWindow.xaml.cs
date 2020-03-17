@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,21 +36,24 @@ namespace BasicGeometricShapes.AddShapeWindows
 
         private void DrawEllipse(object sender, RoutedEventArgs e)
         {
-            Ellipse ellipse = new Ellipse();
-            ellipse.Width = Double.Parse(elipseWidth.Text);
-            ellipse.Height = Double.Parse(elipseHeight.Text);
-            var stringFillColor = elipseFillColor.SelectedColorText;
-            ellipse.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
-            var BorderColor = ellipseBroderColor.SelectedColorText;
-            ellipse.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
-            ellipse.StrokeThickness = Double.Parse(elipseThickness.Text);
-            Canvas.SetTop(ellipse, points.Y);
-            Canvas.SetLeft(ellipse, points.X);
-            
-            activeDrawTable.Children.Add(ellipse);
-            MainWindow.canvasShapes.Add(ellipse);
+            if (IsValidate())
+            {
+                Ellipse ellipse = new Ellipse();
+                ellipse.Width = Double.Parse(elipseWidth.Text);
+                ellipse.Height = Double.Parse(elipseHeight.Text);
+                var stringFillColor = elipseFillColor.SelectedColorText;
+                ellipse.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
+                var BorderColor = ellipseBroderColor.SelectedColorText;
+                ellipse.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
+                ellipse.StrokeThickness = Double.Parse(elipseThickness.Text);
+                Canvas.SetTop(ellipse, points.Y);
+                Canvas.SetLeft(ellipse, points.X);
 
-            this.Close();
+                activeDrawTable.Children.Add(ellipse);
+                MainWindow.canvasShapes.Add(ellipse);
+
+                this.Close();
+            }
         }
 
         private void CloseDraw(object sender, RoutedEventArgs e)
@@ -57,8 +61,91 @@ namespace BasicGeometricShapes.AddShapeWindows
             this.Close();
         }
 
-        private void Validate()
+        private bool IsValidate()
         {
+            bool isValid = true;
+            bool valid_WorH = true;
+
+            if (elipseWidth.Text.Trim().Equals(String.Empty))
+            {
+                labelWElipse.Content = "Ellipse must have a width.";
+                elipseWidth.BorderBrush = Brushes.Red;
+
+                valid_WorH = false;
+                isValid = false;
+            }
+            else
+            {
+                labelWElipse.Content = String.Empty;
+                elipseWidth.BorderBrush = Brushes.Gray;
+            }
+            if (elipseHeight.Text.Trim().Equals(String.Empty))
+            {
+                labelHElipse.Content = "Ellipse must have a height.";
+                elipseHeight.BorderBrush = Brushes.Red;
+
+                valid_WorH = false;
+                isValid = false;
+            }
+            else
+            {
+                labelHElipse.Content = String.Empty;
+                elipseHeight.BorderBrush = Brushes.Gray;
+            }
+            if (elipseThickness.Text.Trim().Equals(String.Empty))
+            {
+                labelThicknessElipse.Content = "Must have a border thickness.";
+                elipseThickness.BorderBrush = Brushes.Red;
+
+                valid_WorH = false;
+                isValid = false;
+            }
+            else
+            {
+                labelThicknessElipse.Content = String.Empty;
+                elipseThickness.BorderBrush = Brushes.Gray;
+            }
+            if (elipseFillColor.SelectedColor == null)
+            {
+                labelFCElipse.Content = "Choose fill color.";
+                elipseFillColor.BorderBrush = Brushes.Red;
+
+                isValid = false;
+            }
+            else
+            {
+                labelFCElipse.Content = String.Empty;
+                elipseFillColor.BorderBrush = Brushes.Gray;
+            }
+            if (ellipseBroderColor.SelectedColor == null)
+            {
+                labelBCElipse.Content = "Choose border color.";
+                ellipseBroderColor.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                labelBCElipse.Content = String.Empty;
+                ellipseBroderColor.BorderBrush = Brushes.Gray;
+            }
+
+            if (valid_WorH)
+            {
+                if (Int32.Parse(elipseThickness.Text.Trim()) > Int32.Parse(elipseWidth.Text.Trim()) || Int32.Parse(elipseThickness.Text.Trim()) > Int32.Parse(elipseHeight.Text.Trim()))
+                {
+                    labelThicknessElipse.Content = "Border thickness must be lower.";
+                    elipseThickness.BorderBrush = Brushes.Red;
+
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+        
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
