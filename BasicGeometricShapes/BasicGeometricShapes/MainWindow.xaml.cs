@@ -80,11 +80,18 @@ namespace BasicGeometricShapes
         }
 
         private void ActiveCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
+        {//serditi polygon undo redo i clear polygon i srediti edit poligona
             if (polygonPoints.Count > 0)//u slucaju da je stavljena bar jedna tacka na Canvas i klikne se bilo gde teme polygona i ako je polygon aktivan u meniju napravi polygon !!!!!!!![mozda da bude aktivno u meniju ono sto ...]
             {
-                PolygonWindow polygonWindow = new PolygonWindow(ActiveCanvas);
-                polygonWindow.ShowDialog();
+                if (MainWindow.polygonPoints.Count < 3)
+                {
+                    MessageBox.Show("The polygon must have 3 vertices or more.", "Polygon draw error!");
+                }
+                else
+                {
+                    PolygonWindow polygonWindow = new PolygonWindow(ActiveCanvas);
+                    polygonWindow.ShowDialog();
+                }
             }
             else if (e.OriginalSource is Ellipse)
             {
