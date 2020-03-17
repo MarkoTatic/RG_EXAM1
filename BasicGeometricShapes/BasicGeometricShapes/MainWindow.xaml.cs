@@ -93,6 +93,11 @@ namespace BasicGeometricShapes
                     polygonWindow.ShowDialog();
                 }
             }
+            else if (e.OriginalSource is Polygon)
+            {
+                Polygon clickedPolygon = (Polygon)e.OriginalSource;
+
+            }
             else if (e.OriginalSource is Ellipse)
             {
                 Ellipse clickedEllipsy = (Ellipse)e.OriginalSource;
