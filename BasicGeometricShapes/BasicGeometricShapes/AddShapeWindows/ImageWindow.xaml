@@ -6,16 +6,29 @@
         xmlns:local="clr-namespace:BasicGeometricShapes.AddShapeWindows"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="ImageWindow" Height="210" Width="260">
+        Title="ImageWindow" Height="235" Width="425.333">
     <Grid>
-        <Label Content="Width:" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" VerticalAlignment="Top" Width="90"/>
-        <Label Content="Height:" HorizontalAlignment="Left" Height="28" Margin="10,53,0,0" VerticalAlignment="Top" Width="68"/>
-        <TextBox x:Name="imageWidth" HorizontalAlignment="Left" Height="28" Margin="100,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
-        <TextBox x:Name="imageHeight" HorizontalAlignment="Left" Height="28" Margin="100,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
-        <Label Content="Choose image:" HorizontalAlignment="Left" Height="28" Margin="10,98,0,0" VerticalAlignment="Top" Width="90"/>
-        <Button Content="Choose" HorizontalAlignment="Left" Margin="128,97,0,0" VerticalAlignment="Top" Width="86" Height="28" Click="ChooseDialog"/>
-        <Button Content="Draw" HorizontalAlignment="Left" Height="28" Margin="26,136,0,0" VerticalAlignment="Top" Width="69" Click="DrawImage"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Height="29" Margin="155,135,0,0" VerticalAlignment="Top" Width="68" Click="CloseDraw"/>
 
+        <StackPanel Margin="200,0,-42,0"  >
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/BasicGeometricShapes;component/Images/painters.png"/>
+            </StackPanel.Background>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0">
+            <Label Content="Width:" HorizontalAlignment="Left" Height="28" Margin="10,10,0,0" VerticalAlignment="Top" Width="90"/>
+            <Label Content="Height:" HorizontalAlignment="Left" Height="28" Margin="10,20,0,0" VerticalAlignment="Top" Width="68"/>
+            <Label Content="Choose image:" HorizontalAlignment="Left" Height="28" Margin="10,20,0,0" VerticalAlignment="Top" Width="90"/>
+            <Button Content="Draw" HorizontalAlignment="Left" Height="28" Margin="10,20,0,0" VerticalAlignment="Top" Background="#FFA2E8A2" Width="100"  Click="DrawImage"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <TextBox x:Name="imageWidth" HorizontalAlignment="Left" Height="28" Margin="100,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+            <Label Content="Label" HorizontalAlignment="Left" Height="20" FontSize="9" Margin="100,0,0,0" Width="165"/>
+            <TextBox x:Name="imageHeight" HorizontalAlignment="Left" Height="28" Margin="100,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+            <Label Content="Label" HorizontalAlignment="Left" Height="20" FontSize="9" Margin="100,0,0,0" Width="165"/>
+            <Button Content="Choose" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Top" Width="140" Height="28" Click="ChooseDialog"/>
+            <Button Content="Cancel" HorizontalAlignment="Left" Background="#FFA2E8A2" Height="29" Margin="140,20,0,0" VerticalAlignment="Top" Width="100" Click="CloseDraw"/>
+        </StackPanel>
     </Grid>
 </Window>

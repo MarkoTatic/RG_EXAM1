@@ -220,6 +220,11 @@ namespace BasicGeometricShapes
         private void ClearPolygon()
         {
             MainWindow.polygonPoints.Clear();
+
+            foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)//fejk pravljenje da dotovi nestanu... jer je referenca moze
+            {
+                ActiveCanvas.Children.Remove(ellipseDot);
+            }
         }
     }
 }

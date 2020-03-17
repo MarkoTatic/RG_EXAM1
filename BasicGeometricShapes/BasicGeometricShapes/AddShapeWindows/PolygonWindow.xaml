@@ -6,15 +6,32 @@
         xmlns:local="clr-namespace:BasicGeometricShapes.AddShapeWindows"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="PolygonWindow" Height="215" Width="310">
+        Title="PolygonWindow" Height="235" Width="473.333">
     <Grid>
-        <Label Content="Fill Color:" HorizontalAlignment="Left" Height="23" Margin="10,16,0,0" VerticalAlignment="Top" Width="68"/>
-        <Label Content="Border Color:" HorizontalAlignment="Left" Height="28" Margin="10,50,0,0" VerticalAlignment="Top" Width="82"/>
-        <Label Content="Border Thickness:" HorizontalAlignment="Left" Height="26" Margin="10,91,0,0" VerticalAlignment="Top" Width="121"/>
-        <TextBox x:Name="polygonThickness" HorizontalAlignment="Left" Height="28" Margin="145,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
-        <Button Content="Draw" HorizontalAlignment="Left" Height="28" Margin="22,145,0,0" VerticalAlignment="Top" Width="116" Click="DrawPolygon" />
-        <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="158,145,0,0" VerticalAlignment="Top" Width="116" Click="CloseDraw" />
-        <xctk:ColorPicker x:Name="polygonFillColor" HorizontalAlignment="Left" Height="23" Margin="145,16,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
-        <xctk:ColorPicker x:Name="polygonBroderColor" HorizontalAlignment="Left" Height="28" Margin="145,50,0,0" VerticalAlignment="Top" Width="139"/>
+        <StackPanel Margin="233,0,-38,0"  >
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/BasicGeometricShapes;component/Images/painters.png"/>
+            </StackPanel.Background>
+        </StackPanel>
+        <StackPanel Grid.Column="0">
+            <Label Content="Fill Color:" HorizontalAlignment="Left" Height="23" Margin="10,16,0,0" VerticalAlignment="Top" Width="68"/>
+            <Label Content="Border Color:" HorizontalAlignment="Left" Height="28" Margin="10,20,0,0" VerticalAlignment="Top" Width="82"/>
+            <Label Content="Border Thickness:" HorizontalAlignment="Left" Height="26" Margin="10,20,0,0" VerticalAlignment="Top" Width="121"/>
+            <Button Content="Draw" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="10,20,0,0" VerticalAlignment="Top" Width="116" Click="DrawPolygon" />
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <xctk:ColorPicker x:Name="polygonFillColor" HorizontalAlignment="Left" Height="25" Margin="125,16,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
+            <Label Content="Label" HorizontalAlignment="Left" Height="20" FontSize="9" Margin="125,0,0,0" Width="165"/>
+            <xctk:ColorPicker x:Name="polygonBroderColor" HorizontalAlignment="Left" Height="25" Margin="125,0,0,0" VerticalAlignment="Top" Width="139"/>
+            <Label Content="Label" HorizontalAlignment="Left" Height="20" FontSize="9" Margin="125,0,0,0" Width="165"/>
+            <TextBox x:Name="polygonThickness" HorizontalAlignment="Left" Height="25" Margin="125,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+            <Label Content="Label" HorizontalAlignment="Left" Height="20" FontSize="9" Margin="125,0,0,0" Width="165"/>
+            <Button Content="Cancel" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="149,1,0,0" VerticalAlignment="Top" Width="116" Click="CloseDraw" />
+        </StackPanel>
+        
+        
+        
+        
+        
     </Grid>
 </Window>
