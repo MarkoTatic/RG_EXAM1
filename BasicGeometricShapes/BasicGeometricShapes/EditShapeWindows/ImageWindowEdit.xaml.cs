@@ -34,6 +34,44 @@ namespace BasicGeometricShapes.EditShapeWindows
             ImageWindow.imgSource = image.Source.ToString();
         }
 
+        private void EditImage(object sender, RoutedEventArgs e)
+        {
+            if (IsValidate())
+            {
+                currentImage.Source = new ImageSourceConverter().ConvertFromString(ImageWindow.imgSource) as ImageSource;
+                currentImage.Height = currentImage.Height;
+                currentImage.Width = currentImage.Width;
+                currentImage.Stretch = currentImage.Stretch;
+
+                this.Close();
+            }
+        }
+
+        private bool IsValidate()
+        {
+            bool isValid = true;
+
+            if (ImageWindow.imgSource.Trim().Equals(String.Empty))
+            {
+                labelchoose.Content = "You must choose image.";
+                chooseButton.BorderBrush = Brushes.Red;
+
+                isValid = false;
+            }
+            else
+            {
+                labelchoose.Content = "";
+                chooseButton.BorderBrush = Brushes.Gray;
+            }
+
+            return isValid;
+        }
+
+        private void CloseImage(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void ChooseDialog(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -41,21 +79,6 @@ namespace BasicGeometricShapes.EditShapeWindows
             dialog.Filter = "All Files|*.*";
             dialog.ShowDialog();
             ImageWindow.imgSource = dialog.FileName.ToString();
-        }
-
-        private void EditImage(object sender, RoutedEventArgs e)
-        {
-            currentImage.Source = new ImageSourceConverter().ConvertFromString(ImageWindow.imgSource) as ImageSource;
-            currentImage.Height = currentImage.Height;
-            currentImage.Width = currentImage.Width;
-            currentImage.Stretch = currentImage.Stretch;
-
-            this.Close();
-        }
-
-        private void CloseImage(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }
