@@ -96,13 +96,15 @@ namespace BasicGeometricShapes
             else if (e.OriginalSource is Polygon)
             {
                 Polygon clickedPolygon = (Polygon)e.OriginalSource;
+                PolygonWindowEdit polygonWindowEdit = new PolygonWindowEdit(clickedPolygon);
+                polygonWindowEdit.ShowDialog();
 
             }
             else if (e.OriginalSource is Ellipse)
             {
                 Ellipse clickedEllipsy = (Ellipse)e.OriginalSource;
-                ElipseWindowEdit elipseWindow = new ElipseWindowEdit(clickedEllipsy); // 1 for edit
-                elipseWindow.ShowDialog();
+                ElipseWindowEdit elipseWindowEdit = new ElipseWindowEdit(clickedEllipsy); // 1 for edit
+                elipseWindowEdit.ShowDialog();
             }
             else if (e.OriginalSource is Rectangle)
             {

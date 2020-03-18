@@ -1,0 +1,27 @@
+﻿<Window x:Class="BasicGeometricShapes.EditShapeWindows.PolygonWindowEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BasicGeometricShapes.EditShapeWindows"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="PolygonWindowEdit" Height="238" Width="310">
+    <Grid>
+        <StackPanel Grid.Column="0">
+            <Label Content="Fill Color:" HorizontalAlignment="Left" Height="23" Margin="10,18,0,0" VerticalAlignment="Top" Width="68"/>
+            <Label Content="Border Color:" HorizontalAlignment="Left" Height="25" Margin="10,22,0,0" VerticalAlignment="Top" Width="82"/>
+            <Label Content="Border Thickness:" HorizontalAlignment="Left" Height="26" Margin="10,22,0,0" VerticalAlignment="Top" Width="121"/>
+            <Button Content="Edit" HorizontalAlignment="Left" Height="28" Margin="10,27,0,0" VerticalAlignment="Top" Width="116" Click="EditEllipse"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <xctk:ColorPicker x:Name="polygonFillColor" HorizontalAlignment="Left" Height="28" Margin="145,15,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
+            <Label x:Name="labelFC" FontWeight="Bold" Foreground="Red"  Content=""   FontSize="9" HorizontalAlignment="Left" Height="20" Margin="144,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <xctk:ColorPicker x:Name="polygonBorderColor" HorizontalAlignment="Left" Height="28" Margin="144,0,0,0" VerticalAlignment="Top" Width="139"/>
+            <Label x:Name="labelBC" FontWeight="Bold" Foreground="Red"  Content=""   FontSize="9" HorizontalAlignment="Left" Height="20" Margin="144,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <TextBox x:Name="polygonThickness" HorizontalAlignment="Left" Height="28" PreviewTextInput="NumberValidationTextBox" Margin="144,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+            <Label x:Name="labelThc" FontWeight="Bold" Foreground="Red"  Content=""   FontSize="9" HorizontalAlignment="Left" Height="20" Margin="144,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="168,4,0,0" VerticalAlignment="Top" Width="116" Click="CloseEdit"/>
+        </StackPanel>
+    </Grid>
+</Window>
