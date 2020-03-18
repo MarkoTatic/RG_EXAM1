@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,14 +27,73 @@ namespace BasicGeometricShapes.EditShapeWindows
         {
             InitializeComponent();
             currentEllipse = ellipse;
-            elipseWidth.Text = currentEllipse.Width.ToString();
-            elipseHeight.Text = currentEllipse.Height.ToString();
             elipseThickness.Text = currentEllipse.StrokeThickness.ToString();
 
             Brush br = currentEllipse.Fill;
             elipseFillColor.SelectedColor = ConvertBrushToColor(br);
             br = currentEllipse.Stroke;
             ellipseBroderColor.SelectedColor = ConvertBrushToColor(br);
+        }
+
+        private void EditEllipse(object sender, RoutedEventArgs e)
+        {
+            if (IsValidate())
+            {
+                var stringFillColor = elipseFillColor.SelectedColorText;
+                currentEllipse.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
+                var BorderColor = ellipseBroderColor.SelectedColorText;
+                currentEllipse.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
+                currentEllipse.StrokeThickness = Double.Parse(elipseThickness.Text);
+
+                this.Close();
+            }
+        }
+
+        private bool IsValidate()
+        {
+            bool isValid = true;
+
+            if (elipseThickness.Text.Trim().Equals(String.Empty) || elipseThickness.Text.Trim().Contains(" "))
+            {
+                labelThc.Content = "Must have a border thickness.";
+                elipseThickness.BorderBrush = Brushes.Red;
+
+                isValid = false;
+            }
+            else
+            {
+                labelThc.Content = String.Empty;
+                elipseThickness.BorderBrush = Brushes.Gray;
+            }
+            if (elipseFillColor.SelectedColor == null)
+            {
+                labelFC.Content = "Choose fill color.";
+                elipseFillColor.BorderBrush = Brushes.Red;
+
+                isValid = false;
+            }
+            else
+            {
+                labelFC.Content = String.Empty;
+                elipseFillColor.BorderBrush = Brushes.Gray;
+            }
+            if (ellipseBroderColor.SelectedColor == null)
+            {
+                labelBC.Content = "Choose border color.";
+                ellipseBroderColor.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                labelBC.Content = String.Empty;
+                ellipseBroderColor.BorderBrush = Brushes.Gray;
+            }
+
+            return isValid;
+        }
+
+        private void CloseEdit(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private Color ConvertBrushToColor(Brush br)
@@ -51,22 +111,10 @@ namespace BasicGeometricShapes.EditShapeWindows
             return color;
         }
 
-        private void EditEllipse(object sender, RoutedEventArgs e)
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
-            currentEllipse.Width = Double.Parse(elipseWidth.Text);
-            currentEllipse.Height = Double.Parse(elipseHeight.Text);
-            var stringFillColor = elipseFillColor.SelectedColorText;
-            currentEllipse.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
-            var BorderColor = ellipseBroderColor.SelectedColorText;
-            currentEllipse.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
-            currentEllipse.StrokeThickness = Double.Parse(elipseThickness.Text);
-
-            this.Close();
-        }
-
-        private void CloseEdit(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

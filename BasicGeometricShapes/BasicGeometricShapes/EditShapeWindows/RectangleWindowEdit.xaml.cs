@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,8 +27,6 @@ namespace BasicGeometricShapes.EditShapeWindows
         {
             InitializeComponent();
             currentRectangle = rectangle;
-            rectangleWidth.Text = currentRectangle.Width.ToString();
-            rectangleHeight.Text = currentRectangle.Height.ToString();
             rectangleThickness.Text = currentRectangle.StrokeThickness.ToString();
 
             Brush br = currentRectangle.Fill;
@@ -39,16 +38,60 @@ namespace BasicGeometricShapes.EditShapeWindows
        
         private void EditRectangle(object sender, RoutedEventArgs e)
         {
-            currentRectangle.Width = Double.Parse(rectangleWidth.Text);
-            currentRectangle.Height = Double.Parse(rectangleHeight.Text);
-            var stringFillColor = rectangleFillColor.SelectedColorText;
-            currentRectangle.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
-            var BorderColor = rectangleBroderColor.SelectedColorText;
-            currentRectangle.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
-            currentRectangle.StrokeThickness = Double.Parse(rectangleThickness.Text);
+            if (IsValidate())
+            {
+                var stringFillColor = rectangleFillColor.SelectedColorText;
+                currentRectangle.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
+                var BorderColor = rectangleBroderColor.SelectedColorText;
+                currentRectangle.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
+                currentRectangle.StrokeThickness = Double.Parse(rectangleThickness.Text);
 
-            this.Close();
+                this.Close();
+            }
         }
+
+        private bool IsValidate()
+        {
+            bool isValid = true;
+
+            if (rectangleThickness.Text.Trim().Equals(String.Empty) || rectangleThickness.Text.Trim().Contains(" "))
+            {
+                labelThc.Content = "Must have a border thickness.";
+                rectangleThickness.BorderBrush = Brushes.Red;
+
+                isValid = false;
+            }
+            else
+            {
+                labelThc.Content = String.Empty;
+                rectangleThickness.BorderBrush = Brushes.Gray;
+            }
+            if (rectangleFillColor.SelectedColor == null)
+            {
+                labelFC.Content = "Choose fill color.";
+                rectangleFillColor.BorderBrush = Brushes.Red;
+
+                isValid = false;
+            }
+            else
+            {
+                labelFC.Content = String.Empty;
+                rectangleFillColor.BorderBrush = Brushes.Gray;
+            }
+            if (rectangleBroderColor.SelectedColor == null)
+            {
+                labelBC.Content = "Choose border color.";
+                rectangleBroderColor.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                labelBC.Content = String.Empty;
+                rectangleBroderColor.BorderBrush = Brushes.Gray;
+            }
+
+            return isValid;
+        }
+
 
         private void CloseEdit(object sender, RoutedEventArgs e)
         {
@@ -68,6 +111,12 @@ namespace BasicGeometricShapes.EditShapeWindows
             color.B = b;
 
             return color;
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
