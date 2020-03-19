@@ -68,7 +68,7 @@ namespace BasicGeometricShapes.AddShapeWindows
 
             if (polygonThickness.Text.Trim().Equals(String.Empty) || polygonThickness.Text.Trim().Contains(" "))
             {
-                labelTh.Content = "Polygon must have a width.";
+                labelTh.Content = "Polygon must have a thickness.";
                 polygonThickness.BorderBrush = Brushes.Red;
 
                 isValid = false;

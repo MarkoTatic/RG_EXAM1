@@ -85,7 +85,16 @@ namespace BasicGeometricShapes
             {
                 if (MainWindow.polygonPoints.Count < 3)
                 {
-                    MessageBox.Show("The polygon must have 3 vertices or more.", "Polygon draw error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //MessageBox.Show("The polygon must have 3 vertices or more.", "Polygon draw error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBoxResult result = MessageBox.Show("The polygon must have 3 vertices or more. Would you like to continue drawing the polygon?", "Polygon draw error!", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                    switch (result)
+                    {
+                        case MessageBoxResult.Yes:
+                            break;
+                        case MessageBoxResult.No:
+                            ClearPolygon();
+                            break;
+                    }
                 }
                 else
                 {
