@@ -12,7 +12,7 @@
             <Label Content="Fill Color:" HorizontalAlignment="Left" Height="23" Margin="10,18,0,0" VerticalAlignment="Top" Width="68"/>
             <Label Content="Border Color:" HorizontalAlignment="Left" Height="25" Margin="10,22,0,0" VerticalAlignment="Top" Width="82"/>
             <Label Content="Border Thickness:" HorizontalAlignment="Left" Height="26" Margin="10,22,0,0" VerticalAlignment="Top" Width="121"/>
-            <Button Content="Edit" HorizontalAlignment="Left" Height="28" Margin="10,27,0,0" VerticalAlignment="Top" Width="116" Click="EditEllipse"/>
+            <Button Content="Edit" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="10,27,0,0" VerticalAlignment="Top" Width="116" Click="EditEllipse"/>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <xctk:ColorPicker x:Name="polygonFillColor" HorizontalAlignment="Left" Height="28" Margin="145,15,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
@@ -21,7 +21,7 @@
             <Label x:Name="labelBC" FontWeight="Bold" Foreground="Red"  Content=""   FontSize="9" HorizontalAlignment="Left" Height="20" Margin="144,0,0,0" VerticalAlignment="Top" Width="140"/>
             <TextBox x:Name="polygonThickness" HorizontalAlignment="Left" Height="28" PreviewTextInput="NumberValidationTextBox" Margin="144,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
             <Label x:Name="labelThc" FontWeight="Bold" Foreground="Red"  Content=""   FontSize="9" HorizontalAlignment="Left" Height="20" Margin="144,0,0,0" VerticalAlignment="Top" Width="140"/>
-            <Button Content="Cancel" HorizontalAlignment="Left" Height="28" Margin="168,4,0,0" VerticalAlignment="Top" Width="116" Click="CloseEdit"/>
+            <Button Content="Cancel" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="168,4,0,0" VerticalAlignment="Top" Width="116" Click="CloseEdit"/>
         </StackPanel>
     </Grid>
 </Window>

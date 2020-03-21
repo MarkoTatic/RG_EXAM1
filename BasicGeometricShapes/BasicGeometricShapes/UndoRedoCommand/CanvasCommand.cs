@@ -70,7 +70,6 @@ namespace BasicGeometricShapes.UndoRedoCommand
             {
                 ActiveCanvas.Children.Add(helpStack.Pop());
             }
-
         }
     }
 }

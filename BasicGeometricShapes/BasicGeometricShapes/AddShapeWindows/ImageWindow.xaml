@@ -27,7 +27,7 @@
             <Label x:Name="labelW" Content="" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Left" Height="20" FontSize="9" Margin="100,0,0,0" Width="165"/>
             <TextBox x:Name="imageHeight" HorizontalAlignment="Left" Height="28" Margin="100,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" PreviewTextInput="NumberValidationTextBox"/>
             <Label x:Name="labelH" Content="" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Left" Height="20" FontSize="9" Margin="100,0,0,0" Width="165"/>
-            <Button x:Name="chooseButton" Content="Choose" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Top" Width="140" Height="28" Click="ChooseDialog"/>
+            <Button x:Name="chooseButton" Background="#FFFF7272" Content="Choose" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Top" Width="140" Height="28" Click="ChooseDialog"/>
             <Label x:Name="labelChoose" Content="" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Left" Height="20" FontSize="9" Margin="100,0,0,0" Width="165"/>
             <Button Content="Cancel" HorizontalAlignment="Left" Background="#FFA2E8A2" Height="29" Margin="130,0,0,0" VerticalAlignment="Top" Width="110" Click="CloseDraw"/>
         </StackPanel>

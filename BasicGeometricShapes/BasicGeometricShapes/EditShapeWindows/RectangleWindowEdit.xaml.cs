@@ -53,6 +53,7 @@ namespace BasicGeometricShapes.EditShapeWindows
         private bool IsValidate()
         {
             bool isValid = true;
+            bool validWorh = true;
 
             if (rectangleThickness.Text.Trim().Equals(String.Empty) || rectangleThickness.Text.Trim().Contains(" "))
             {
@@ -87,6 +88,17 @@ namespace BasicGeometricShapes.EditShapeWindows
             {
                 labelBC.Content = String.Empty;
                 rectangleBroderColor.BorderBrush = Brushes.Gray;
+            }
+
+            if (validWorh)
+            {
+                if (Int32.Parse(rectangleThickness.Text.Trim()) > (Int32.Parse(currentRectangle.Width.ToString()) / 2) || Int32.Parse(rectangleThickness.Text.Trim()) > (Int32.Parse(currentRectangle.Height.ToString()) / 2))
+                {
+                    labelThc.Content = "Border thic. must be lower.";
+                    rectangleThickness.BorderBrush = Brushes.Red;
+
+                    isValid = false;
+                }
             }
 
             return isValid;

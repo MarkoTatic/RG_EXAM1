@@ -52,12 +52,14 @@ namespace BasicGeometricShapes.EditShapeWindows
         private bool IsValidate()
         {
             bool isValid = true;
+            bool validWorh = true;
 
             if (elipseThickness.Text.Trim().Equals(String.Empty) || elipseThickness.Text.Trim().Contains(" "))
             {
                 labelThc.Content = "Must have a border thickness.";
                 elipseThickness.BorderBrush = Brushes.Red;
 
+                validWorh = false;
                 isValid = false;
             }
             else
@@ -87,6 +89,18 @@ namespace BasicGeometricShapes.EditShapeWindows
                 labelBC.Content = String.Empty;
                 ellipseBroderColor.BorderBrush = Brushes.Gray;
             }
+
+            if (validWorh)
+            {
+                if (Int32.Parse(elipseThickness.Text.Trim()) > (Int32.Parse(currentEllipse.Width.ToString()) / 2) || Int32.Parse(elipseThickness.Text.Trim()) > (Int32.Parse(currentEllipse.Height.ToString()) / 2))
+                {
+                    labelThc.Content = "Border thic. must be lower.";
+                    elipseThickness.BorderBrush = Brushes.Red;
+
+                    isValid = false;
+                }
+            }
+
 
             return isValid;
         }

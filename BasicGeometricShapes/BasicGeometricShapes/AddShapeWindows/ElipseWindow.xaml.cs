@@ -148,9 +148,9 @@ namespace BasicGeometricShapes.AddShapeWindows
 
             if (valid_WorH)
             {
-                if (Int32.Parse(elipseThickness.Text.Trim()) > Int32.Parse(elipseWidth.Text.Trim()) || Int32.Parse(elipseThickness.Text.Trim()) > Int32.Parse(elipseHeight.Text.Trim()))
+                if (Int32.Parse(elipseThickness.Text.Trim()) > (Int32.Parse(elipseWidth.Text.Trim()) / 2) || Int32.Parse(elipseThickness.Text.Trim()) > (Int32.Parse(elipseHeight.Text.Trim()) / 2))
                 {
-                    labelThicknessElipse.Content = "Border thickness must be lower.";
+                    labelThicknessElipse.Content = "Border thic. must be lower.";
                     elipseThickness.BorderBrush = Brushes.Red;
 
                     isValid = false;

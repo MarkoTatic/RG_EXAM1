@@ -72,8 +72,8 @@ namespace BasicGeometricShapes
             Ellipse ellipse = new Ellipse();
             ellipse.Width = 5;
             ellipse.Height = 5;
-            ellipse.Fill = Brushes.LightSeaGreen;
-            ellipse.Stroke = Brushes.LightSeaGreen;
+            ellipse.Fill = Brushes.Crimson;
+            ellipse.Stroke = Brushes.Crimson;
             ellipse.StrokeThickness = 1;
             Canvas.SetTop(ellipse, p.Y);
             Canvas.SetLeft(ellipse, p.X);

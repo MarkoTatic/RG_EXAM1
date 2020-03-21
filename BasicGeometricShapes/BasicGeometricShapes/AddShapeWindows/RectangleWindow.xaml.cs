@@ -140,7 +140,7 @@ namespace BasicGeometricShapes.AddShapeWindows
 
             if (valid_WorH)
             {
-                if (Int32.Parse(rectangleThickness.Text.Trim()) > Int32.Parse(rectangleWidth.Text.Trim()) || Int32.Parse(rectangleThickness.Text.Trim()) > Int32.Parse(rectangleHeight.Text.Trim()))
+                if (Int32.Parse(rectangleThickness.Text.Trim()) > (Int32.Parse(rectangleWidth.Text.Trim()) / 2) || Int32.Parse(rectangleThickness.Text.Trim()) > (Int32.Parse(rectangleHeight.Text.Trim()) / 2))
                 {
                     labelThk.Content = "Border thickness must be lower.";
                     rectangleThickness.BorderBrush = Brushes.Red;

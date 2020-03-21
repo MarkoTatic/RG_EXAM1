@@ -10,12 +10,12 @@
     <Grid>
         <StackPanel Grid.Column="0">
             <Label Content="Choose image:" HorizontalAlignment="Left" Height="28" Margin="15,22,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.468,-1.328"/>
-            <Button Content="Edit" HorizontalAlignment="Left" Height="29" Margin="15,30,0,0" VerticalAlignment="Top" Width="100" Click="EditImage" />
+            <Button Content="Edit" Background="#FFA2E8A2"  HorizontalAlignment="Left" Height="29" Margin="15,30,0,0" VerticalAlignment="Top" Width="100" Click="EditImage" />
         </StackPanel>
         <StackPanel Grid.Column="1">
-            <Button x:Name="chooseButton" Content="Choose" HorizontalAlignment="Left" Margin="135,22,0,0" VerticalAlignment="Top" Width="100" Height="28" Click="ChooseDialog"/>
+            <Button x:Name="chooseButton" Content="Choose" HorizontalAlignment="Left" Margin="135,22,0,0" VerticalAlignment="Top" Width="100" Height="28" Click="ChooseDialog" Background="#FFFF7272"/>
             <Label x:Name="labelchoose" FontWeight="Bold" Foreground="Red"  Content=""  FontSize="9" HorizontalAlignment="Left" Height="20" Margin="135,0,0,0" VerticalAlignment="Top" Width="140"/>
-            <Button Content="Cancel" HorizontalAlignment="Left" Height="29" Margin="135,10,0,0" VerticalAlignment="Top" Width="100" Click="CloseImage"/>
+            <Button Content="Cancel" Background="#FFA2E8A2"  HorizontalAlignment="Left" Height="29" Margin="135,10,0,0" VerticalAlignment="Top" Width="100" Click="CloseImage"/>
         </StackPanel>
     </Grid>
 </Window>
