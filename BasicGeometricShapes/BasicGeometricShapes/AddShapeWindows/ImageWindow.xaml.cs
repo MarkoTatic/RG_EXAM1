@@ -37,15 +37,6 @@ namespace BasicGeometricShapes.AddShapeWindows
 
         }
 
-        private void ChooseDialog(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Choose Image";
-            dialog.Filter = "All Files|*.*";
-            dialog.ShowDialog();
-            ImageWindow.imgSource.Source = new ImageSourceConverter().ConvertFromString(dialog.FileName.ToString()) as ImageSource;
-        }
-
         private void DrawImage(object sender, RoutedEventArgs e)
         {
             if (IsValidate())
@@ -65,6 +56,15 @@ namespace BasicGeometricShapes.AddShapeWindows
             }
         }
 
+        private void ChooseDialog(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Choose Image";
+            dialog.Filter = "All Files|*.*";
+            dialog.ShowDialog();
+            ImageWindow.imgSource.Source = new ImageSourceConverter().ConvertFromString(dialog.FileName.ToString()) as ImageSource;
+        }
+
         private void AddToUndoStack(Image image)
         {
             var images = new List<UIElement>();
@@ -76,7 +76,6 @@ namespace BasicGeometricShapes.AddShapeWindows
                     images.Add(item);
                 }
             }
-
             CanvasCommand.RedoStack.Clear();//mora da se ocitisti, jer ako ostane onda ce pamtiti i nakon undo-a ako se napravi nova grana pamtice sa stare grane sta je bilo za redo
             CanvasCommand.UndoStack.Push(images);
         }

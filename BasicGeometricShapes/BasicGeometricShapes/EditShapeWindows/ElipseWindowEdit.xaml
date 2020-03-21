@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BasicGeometricShapes.EditShapeWindows"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="ElipseWindow" Height="238" Width="310">
+        Title="ElipseWindow" Height="238" Width="310"
+        ResizeMode="NoResize">
     <Grid>
         <StackPanel Grid.Column="0">
             <Label Content="Fill Color:" HorizontalAlignment="Left" Height="23" Margin="10,18,0,0" VerticalAlignment="Top" Width="68"/>

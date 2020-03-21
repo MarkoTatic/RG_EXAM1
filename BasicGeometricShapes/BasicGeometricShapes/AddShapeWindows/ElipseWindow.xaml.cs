@@ -23,7 +23,6 @@ namespace BasicGeometricShapes.AddShapeWindows
     {
         private Canvas activeDrawTable;
         private Point points;
-
         public Canvas ActiveDrawTable { get => activeDrawTable; set => activeDrawTable = value; }
         public Point Points { get => points; set => points = value; }
 
@@ -33,7 +32,6 @@ namespace BasicGeometricShapes.AddShapeWindows
            points = point;
            activeDrawTable = activeCanvas;
         }
-
 
         private void DrawEllipse(object sender, RoutedEventArgs e)
         {

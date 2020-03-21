@@ -46,7 +46,7 @@ namespace BasicGeometricShapes.AddShapeWindows
                 polygon.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
                 var BorderColor = polygonBroderColor.SelectedColorText;
                 polygon.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
-                polygon.FillRule = FillRule.Nonzero;//da preklapa lepo
+                //polygon.FillRule = FillRule.Nonzero;//prilikom crtanja polygona ako se linije izmedju temena preklope da oboji ono izmedju Fill bojom...
 
                 activeDrawTable.Children.Add(polygon);
 
@@ -55,6 +55,7 @@ namespace BasicGeometricShapes.AddShapeWindows
                 {
                     activeDrawTable.Children.Remove(ellipseDot);
                 }
+                MainWindow.tempPolyDots.Clear();//i ne mora ovde clear
 
                 AddToUndoStack(polygon);
 

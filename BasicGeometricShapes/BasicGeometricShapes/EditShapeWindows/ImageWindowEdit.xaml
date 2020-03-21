@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BasicGeometricShapes.EditShapeWindows"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="ImageWindowEdit" Height="160" Width="260">
+        Title="ImageWindowEdit" Height="160" Width="260"
+        ResizeMode="NoResize">
     <Grid>
         <StackPanel Grid.Column="0">
             <Label Content="Choose image:" HorizontalAlignment="Left" Height="28" Margin="15,22,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.468,-1.328"/>

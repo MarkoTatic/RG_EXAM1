@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BasicGeometricShapes.AddShapeWindows"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="ImageWindow" Height="235" Width="425.333">
+        Title="ImageWindow" Height="235" Width="425.333"
+        ResizeMode="NoResize">
     <Grid>
 
         <StackPanel Margin="200,0,-42,0"  >

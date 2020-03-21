@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BasicGeometricShapes.AddShapeWindows"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="PolygonWindow" Height="235" Width="473.333">
+        Title="PolygonWindow" Height="235" Width="473.333"
+        ResizeMode="NoResize">
     <Grid>
         <StackPanel Margin="233,0,-38,0"  >
             <StackPanel.Background>
