@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicGeometricShapes.UndoRedoCommand;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,8 +49,26 @@ namespace BasicGeometricShapes.AddShapeWindows
                 activeDrawTable.Children.Add(rectangle);
                 MainWindow.canvasShapes.Add(rectangle);
 
+                AddToUndoStack(rectangle);
+
                 this.Close();
             }
+        }
+
+        private void AddToUndoStack(Rectangle rectangle)
+        {
+            var rectangles = new List<UIElement>();
+            rectangles.Add(rectangle);
+            if (CanvasCommand.UndoStack.Count > 0)
+            {
+                foreach (var item in CanvasCommand.UndoStack.Peek())//sve elemente koji su trenutno na steku dodaj u novu listu i onda pushaj tu listu na vrh steka
+                {
+                    rectangles.Add(item);
+                }
+            }
+
+            CanvasCommand.RedoStack.Clear();
+            CanvasCommand.UndoStack.Push(rectangles);
         }
 
         private bool IsValidate()

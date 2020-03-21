@@ -70,6 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UndoRedoCommand\CanvasCommand.cs" />
+    <Compile Include="UndoRedoCommand\Command.cs" />
     <Page Include="AddShapeWindows\ElipseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

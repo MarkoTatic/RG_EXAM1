@@ -1,5 +1,6 @@
 ﻿using BasicGeometricShapes.AddShapeWindows;
 using BasicGeometricShapes.EditShapeWindows;
+using BasicGeometricShapes.UndoRedoCommand;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,16 +26,17 @@ namespace BasicGeometricShapes
         public static List<Shape> canvasShapes;
         public static List<Point> polygonPoints;
         public static List<Ellipse> tempPolyDots;
-        public static Stack<UIElement> removedShapesForRedo;
-        public static Stack<List<UIElement>> undoClearFunction;
+
+        public CanvasCommand _commander;
+
         public MainWindow()
         {
             InitializeComponent();
             canvasShapes = new List<Shape>();
             polygonPoints = new List<Point>();
             tempPolyDots = new List<Ellipse>();
-            removedShapesForRedo = new Stack<UIElement>();
-            undoClearFunction = new Stack<List<UIElement>>();
+
+            _commander = new CanvasCommand(ActiveCanvas);
         }
 
         private void ActiveCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -183,14 +185,21 @@ namespace BasicGeometricShapes
             Undo.IsChecked = false;
             Redo.IsChecked = false;
 
-            var listOFClearedObj = new List<UIElement>();
-            foreach (UIElement element in ActiveCanvas.Children)
-            {
-                listOFClearedObj.Add(element);
-            }
-            undoClearFunction.Push(listOFClearedObj);
+            ClearPolygon();//ocisti tacke ako je zapocet poligon
 
+            if (ActiveCanvas.Children.Count > 0)//nema potrebe da radi clear ako je cista tabla...
+            {
+                ClearCanvasBoard();
+            }
+        }
+
+        private void ClearCanvasBoard()
+        {
+            var emptyList = new List<UIElement>();
             ActiveCanvas.Children.Clear();
+
+            CanvasCommand.UndoStack.Push(emptyList);//prazna je lista za undo jer je bio clear
+            CanvasCommand.RedoStack.Clear();// jer posle cleara krece na novu granu jer je to nova funkcija kaoo
         }
 
         private void Undo_Click(object sender, RoutedEventArgs e)
@@ -203,21 +212,23 @@ namespace BasicGeometricShapes
             Clear.IsChecked = false;
             Undo.IsChecked = false;
 
-            if (ActiveCanvas.Children.Count > 0)
+            if (MainWindow.polygonPoints.Count > 0)//provera samo da li je krenuo da crta tacke poligona a hoce undo
             {
-                removedShapesForRedo.Push(ActiveCanvas.Children[ActiveCanvas.Children.Count - 1]);
-                ActiveCanvas.Children.RemoveAt(ActiveCanvas.Children.Count - 1);
-            }
-            else//ako je clear bio
-            {
-                var undoIfClear = new List<UIElement>();
-                if (MainWindow.undoClearFunction.Count > 0)
-                    undoIfClear = MainWindow.undoClearFunction.Pop();
-                
-                foreach (UIElement element in undoIfClear)
+                MessageBoxResult result = MessageBox.Show("Would you like to continue drawing the polygon? If you don't want it, Clear operation will be performed.", "Polygon draw error!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                switch (result)
                 {
-                    ActiveCanvas.Children.Add(element);
+                    case MessageBoxResult.Yes:
+                        Polygon.IsChecked = true;
+                        break;
+                    case MessageBoxResult.No:
+                        ClearPolygon();
+                        _commander.Execute();
+                        break;
                 }
+            }
+            else
+            {
+                _commander.Execute();
             }
         }
 
@@ -231,11 +242,23 @@ namespace BasicGeometricShapes
             Clear.IsChecked = false;
             Redo.IsChecked = false;
 
-            if (removedShapesForRedo.Count > 0)
-                ActiveCanvas.Children.Add(removedShapesForRedo.Pop());
-            else//ako je clear bio da redo na staro
+            if (MainWindow.polygonPoints.Count > 0)//provera samo da li je krenuo da crta tacke poligona a hoce undo
             {
-
+                MessageBoxResult result = MessageBox.Show("Would you like to continue drawing the polygon? If you don't want it, Clear operation will be performed.", "Polygon draw error!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        Polygon.IsChecked = true;
+                        break;
+                    case MessageBoxResult.No:
+                        ClearPolygon();
+                        _commander.UnExecute();
+                        break;
+                }
+            }
+            else
+            {
+                _commander.UnExecute();
             }
         }
 

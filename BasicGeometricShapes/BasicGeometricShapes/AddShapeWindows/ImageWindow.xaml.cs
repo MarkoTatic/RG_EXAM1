@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using BasicGeometricShapes.UndoRedoCommand;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,8 +58,26 @@ namespace BasicGeometricShapes.AddShapeWindows
                 Canvas.SetLeft(image, points.X);
                 activeDrawTable.Children.Add(image);
 
+                AddToUndoStack(image);
+
                 this.Close();
             }
+        }
+
+        private void AddToUndoStack(Image image)
+        {
+            var images = new List<UIElement>();
+            images.Add(image);
+            if (CanvasCommand.UndoStack.Count > 0)
+            {
+                foreach (var item in CanvasCommand.UndoStack.Peek())//sve elemente koji su trenutno na steku dodaj u novu listu i onda pushaj tu listu na vrh steka
+                {
+                    images.Add(item);
+                }
+            }
+
+            CanvasCommand.RedoStack.Clear();
+            CanvasCommand.UndoStack.Push(images);
         }
 
         private bool IsValidate()

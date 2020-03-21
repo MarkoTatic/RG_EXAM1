@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicGeometricShapes.UndoRedoCommand;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,8 +59,26 @@ namespace BasicGeometricShapes.AddShapeWindows
                     ellipseDot.Stroke = Brushes.Red;
                 }
 
+                AddToUndoStack(polygon);
+
                 this.Close();
             }
+        }
+
+        private void AddToUndoStack(Polygon polygon)
+        {
+            var polygons = new List<UIElement>();
+            polygons.Add(polygon);
+            if (CanvasCommand.UndoStack.Count > 0)
+            {
+                foreach (var item in CanvasCommand.UndoStack.Peek())//sve elemente koji su trenutno na steku dodaj u novu listu i onda pushaj tu listu na vrh steka
+                {
+                    polygons.Add(item);
+                }
+            }
+
+            CanvasCommand.RedoStack.Clear();
+            CanvasCommand.UndoStack.Push(polygons);
         }
 
         private bool IsValidate()

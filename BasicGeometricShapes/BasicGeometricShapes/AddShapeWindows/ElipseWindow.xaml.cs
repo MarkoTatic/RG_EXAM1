@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicGeometricShapes.UndoRedoCommand;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,8 +53,25 @@ namespace BasicGeometricShapes.AddShapeWindows
                 activeDrawTable.Children.Add(ellipse);
                 MainWindow.canvasShapes.Add(ellipse);
 
+                AddToUndoStack(ellipse);
+
                 this.Close();
             }
+        }
+
+        private void AddToUndoStack(Ellipse ellipse)
+        {
+            var ellipses = new List<UIElement>();
+            ellipses.Add(ellipse);
+            if (CanvasCommand.UndoStack.Count > 0)
+            {
+                foreach (var item in CanvasCommand.UndoStack.Peek())//sve elemente koji su trenutno na steku dodaj u novu listu i onda pushaj tu listu na vrh steka
+                {
+                    ellipses.Add(item);
+                }
+            }
+            CanvasCommand.RedoStack.Clear();
+            CanvasCommand.UndoStack.Push(ellipses);
         }
 
         private void CloseDraw(object sender, RoutedEventArgs e)
