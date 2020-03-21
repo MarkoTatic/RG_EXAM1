@@ -67,7 +67,7 @@ namespace BasicGeometricShapes.AddShapeWindows
                 }
             }
 
-            CanvasCommand.RedoStack.Clear();
+            CanvasCommand.RedoStack.Clear();//mora da se ocitisti, jer ako ostane onda ce pamtiti i nakon undo-a ako se napravi nova grana pamtice sa stare grane sta je bilo za redo
             CanvasCommand.UndoStack.Push(rectangles);
         }
 
