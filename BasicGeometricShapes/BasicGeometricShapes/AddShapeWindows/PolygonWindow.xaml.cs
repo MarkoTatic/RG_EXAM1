@@ -49,14 +49,11 @@ namespace BasicGeometricShapes.AddShapeWindows
                 polygon.FillRule = FillRule.Nonzero;//da preklapa lepo
 
                 activeDrawTable.Children.Add(polygon);
-                MainWindow.canvasShapes.Add(polygon);
 
                 MainWindow.polygonPoints.Clear();
-                foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)//fejk pravljenje da dotovi nestanu... jer je referenca moze
+                foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)
                 {
                     activeDrawTable.Children.Remove(ellipseDot);
-                    ellipseDot.Fill = Brushes.Red;
-                    ellipseDot.Stroke = Brushes.Red;
                 }
 
                 AddToUndoStack(polygon);

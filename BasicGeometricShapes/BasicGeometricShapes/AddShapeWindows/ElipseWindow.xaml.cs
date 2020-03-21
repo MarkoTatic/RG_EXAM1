@@ -51,8 +51,6 @@ namespace BasicGeometricShapes.AddShapeWindows
                 Canvas.SetLeft(ellipse, points.X);
 
                 activeDrawTable.Children.Add(ellipse);
-                MainWindow.canvasShapes.Add(ellipse);
-
                 AddToUndoStack(ellipse);
 
                 this.Close();

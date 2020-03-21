@@ -23,7 +23,6 @@ namespace BasicGeometricShapes
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static List<Shape> canvasShapes;
         public static List<Point> polygonPoints;
         public static List<Ellipse> tempPolyDots;
 
@@ -32,7 +31,6 @@ namespace BasicGeometricShapes
         public MainWindow()
         {
             InitializeComponent();
-            canvasShapes = new List<Shape>();
             polygonPoints = new List<Point>();
             tempPolyDots = new List<Ellipse>();
 
@@ -82,8 +80,8 @@ namespace BasicGeometricShapes
         }
 
         private void ActiveCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {//serditi polygon undo redo i clear polygon i srediti edit poligona
-            if (polygonPoints.Count > 0)//u slucaju da je stavljena bar jedna tacka na Canvas i klikne se bilo gde teme polygona i ako je polygon aktivan u meniju napravi polygon !!!!!!!![mozda da bude aktivno u meniju ono sto ...]
+        {
+            if (polygonPoints.Count > 0)
             {
                 if (MainWindow.polygonPoints.Count < 3)
                 {
@@ -113,7 +111,7 @@ namespace BasicGeometricShapes
             else if (e.OriginalSource is Ellipse)
             {
                 Ellipse clickedEllipsy = (Ellipse)e.OriginalSource;
-                ElipseWindowEdit elipseWindowEdit = new ElipseWindowEdit(clickedEllipsy); // 1 for edit
+                ElipseWindowEdit elipseWindowEdit = new ElipseWindowEdit(clickedEllipsy);
                 elipseWindowEdit.ShowDialog();
             }
             else if (e.OriginalSource is Rectangle)

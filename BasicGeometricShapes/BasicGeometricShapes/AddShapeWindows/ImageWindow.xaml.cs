@@ -22,7 +22,7 @@ namespace BasicGeometricShapes.AddShapeWindows
     /// </summary>
     public partial class ImageWindow : Window
     {
-        public static string imgSource;
+        public static Image imgSource;
         private Canvas activeDrawTable;
         private Point points;
         public Canvas ActiveDrawTable { get => activeDrawTable; set => activeDrawTable = value; }
@@ -33,16 +33,17 @@ namespace BasicGeometricShapes.AddShapeWindows
             InitializeComponent();
             points = p;
             activeDrawTable = canvas;
-            imgSource = "";
+            imgSource = new Image();
+
         }
 
         private void ChooseDialog(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Open Image";
+            dialog.Title = "Choose Image";
             dialog.Filter = "All Files|*.*";
             dialog.ShowDialog();
-            ImageWindow.imgSource = dialog.FileName.ToString();
+            ImageWindow.imgSource.Source = new ImageSourceConverter().ConvertFromString(dialog.FileName.ToString()) as ImageSource;
         }
 
         private void DrawImage(object sender, RoutedEventArgs e)
@@ -53,7 +54,7 @@ namespace BasicGeometricShapes.AddShapeWindows
                 image.Stretch = Stretch.Fill;//da bi lepo pokrio sve velicine slike
                 image.Width = Double.Parse(imageWidth.Text);
                 image.Height = Double.Parse(imageHeight.Text);
-                image.Source = new ImageSourceConverter().ConvertFromString(ImageWindow.imgSource) as ImageSource;
+                image.Source = imgSource.Source;
                 Canvas.SetTop(image, points.Y);
                 Canvas.SetLeft(image, points.X);
                 activeDrawTable.Children.Add(image);
@@ -108,7 +109,7 @@ namespace BasicGeometricShapes.AddShapeWindows
                 labelH.Content = String.Empty;
                 imageHeight.BorderBrush = Brushes.Gray;
             }
-            if (imgSource.Trim().Equals(String.Empty))
+            if (imgSource.Source == null)
             {
                 labelChoose.Content = "You must choose image.";
                 chooseButton.BorderBrush = Brushes.Red;
@@ -120,7 +121,7 @@ namespace BasicGeometricShapes.AddShapeWindows
                 labelChoose.Content = "";
                 chooseButton.BorderBrush = Brushes.Gray;
             }
-            
+
             return isValid;
         }
 

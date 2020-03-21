@@ -47,7 +47,6 @@ namespace BasicGeometricShapes.AddShapeWindows
                 Canvas.SetTop(rectangle, points.Y);
                 Canvas.SetLeft(rectangle, points.X);
                 activeDrawTable.Children.Add(rectangle);
-                MainWindow.canvasShapes.Add(rectangle);
 
                 AddToUndoStack(rectangle);
 

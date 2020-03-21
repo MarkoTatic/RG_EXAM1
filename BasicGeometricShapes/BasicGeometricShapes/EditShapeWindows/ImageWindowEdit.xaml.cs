@@ -31,14 +31,14 @@ namespace BasicGeometricShapes.EditShapeWindows
             currentImage.Stretch = image.Stretch;
             currentImage.Height = image.Height;
             currentImage.Width = image.Width;
-            ImageWindow.imgSource = image.Source.ToString();
+            ImageWindow.imgSource.Source = image.Source;
         }
 
         private void EditImage(object sender, RoutedEventArgs e)
         {
             if (IsValidate())
             {
-                currentImage.Source = new ImageSourceConverter().ConvertFromString(ImageWindow.imgSource) as ImageSource;
+                currentImage.Source = ImageWindow.imgSource.Source;
                 currentImage.Height = currentImage.Height;
                 currentImage.Width = currentImage.Width;
                 currentImage.Stretch = currentImage.Stretch;
@@ -51,7 +51,7 @@ namespace BasicGeometricShapes.EditShapeWindows
         {
             bool isValid = true;
 
-            if (ImageWindow.imgSource.Trim().Equals(String.Empty))
+            if (ImageWindow.imgSource.Source == null)
             {
                 labelchoose.Content = "You must choose image.";
                 chooseButton.BorderBrush = Brushes.Red;
@@ -75,10 +75,10 @@ namespace BasicGeometricShapes.EditShapeWindows
         private void ChooseDialog(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Open Image";
+            dialog.Title = "Choose Image";
             dialog.Filter = "All Files|*.*";
             dialog.ShowDialog();
-            ImageWindow.imgSource = dialog.FileName.ToString();
+            ImageWindow.imgSource.Source = new ImageSourceConverter().ConvertFromString(dialog.FileName.ToString()) as ImageSource;
         }
     }
 }
