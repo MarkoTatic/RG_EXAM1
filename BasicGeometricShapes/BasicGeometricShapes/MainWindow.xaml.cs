@@ -132,59 +132,30 @@ namespace BasicGeometricShapes
 
         private void Elipse_Click(object sender, RoutedEventArgs e)
         {
-            Rectangle.IsChecked = false;
-            Polygon.IsChecked = false;
-            Image.IsChecked = false;
-            Clear.IsChecked = false;
-            Undo.IsChecked = false;
-            Redo.IsChecked = false;
-
+            UncheckMenuItems(1);
             ClearPolygon();
         }
 
         private void Rectangle_Click(object sender, RoutedEventArgs e)
         {
-            Elipse.IsChecked = false;
-            Polygon.IsChecked = false;
-            Image.IsChecked = false;
-            Clear.IsChecked = false;
-            Undo.IsChecked = false;
-            Redo.IsChecked = false;
-
+            UncheckMenuItems(2);
             ClearPolygon();
         }
 
         private void Polygon_Click(object sender, RoutedEventArgs e)
         {
-            Rectangle.IsChecked = false;
-            Elipse.IsChecked = false;
-            Image.IsChecked = false;
-            Clear.IsChecked = false;
-            Undo.IsChecked = false;
-            Redo.IsChecked = false;
+            UncheckMenuItems(3);
         }
 
         private void Image_Click(object sender, RoutedEventArgs e)
         {
-            Rectangle.IsChecked = false;
-            Polygon.IsChecked = false;
-            Elipse.IsChecked = false;
-            Clear.IsChecked = false;
-            Undo.IsChecked = false;
-            Redo.IsChecked = false;
-
+            UncheckMenuItems(4);
             ClearPolygon();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
-            Image.IsChecked = false;
-            Rectangle.IsChecked = false;
-            Polygon.IsChecked = false;
-            Elipse.IsChecked = false;
-            Undo.IsChecked = false;
-            Redo.IsChecked = false;
-
+            UncheckMenuItems(5);
             ClearPolygon();//ocisti tacke ako je zapocet poligon
 
             if (ActiveCanvas.Children.Count > 0)//nema potrebe da radi clear ako je cista tabla...
@@ -204,13 +175,7 @@ namespace BasicGeometricShapes
 
         private void Undo_Click(object sender, RoutedEventArgs e)
         {
-            Image.IsChecked = false;
-            Rectangle.IsChecked = false;
-            Polygon.IsChecked = false;
-            Elipse.IsChecked = false;
-            Redo.IsChecked = false;
-            Clear.IsChecked = false;
-            Undo.IsChecked = false;
+            UncheckMenuItems(0);
 
             if (MainWindow.polygonPoints.Count > 0)//provera samo da li je krenuo da crta tacke poligona a hoce undo
             {
@@ -234,13 +199,7 @@ namespace BasicGeometricShapes
 
         private void Redo_Click(object sender, RoutedEventArgs e)
         {
-            Image.IsChecked = false;
-            Rectangle.IsChecked = false;
-            Polygon.IsChecked = false;
-            Elipse.IsChecked = false;
-            Undo.IsChecked = false;
-            Clear.IsChecked = false;
-            Redo.IsChecked = false;
+            UncheckMenuItems(0);
 
             if (MainWindow.polygonPoints.Count > 0)//provera samo da li je krenuo da crta tacke poligona a hoce undo
             {
@@ -259,6 +218,45 @@ namespace BasicGeometricShapes
             else
             {
                 _commander.UnExecute();
+            }
+        }
+
+        private void UncheckMenuItems(int positionInMenu)
+        {
+            Image.IsChecked = false;
+            Rectangle.IsChecked = false;
+            Polygon.IsChecked = false;
+            Elipse.IsChecked = false;
+            Undo.IsChecked = false;
+            Clear.IsChecked = false;
+            Redo.IsChecked = false;
+            if (positionInMenu == 1)
+            {
+                Elipse.IsChecked = true;
+            }
+            else if (positionInMenu == 2)
+            {
+                Rectangle.IsChecked = true;
+            }
+            else if (positionInMenu == 3)
+            {
+                Polygon.IsChecked = true;
+            }
+            else if (positionInMenu == 4)
+            {
+                Image.IsChecked = true;
+            }
+            else if (positionInMenu == 5)
+            {
+                Clear.IsChecked = true;
+            }
+            else if (positionInMenu == 6)
+            {
+                Undo.IsChecked = true;
+            }
+            else if (positionInMenu == 7)
+            {
+                Redo.IsChecked = true;
             }
         }
 
