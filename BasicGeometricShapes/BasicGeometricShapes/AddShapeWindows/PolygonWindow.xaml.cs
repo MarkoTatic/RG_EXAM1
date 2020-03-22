@@ -40,13 +40,12 @@ namespace BasicGeometricShapes.AddShapeWindows
                 {
                     polygon.Points.Add(point);
                 }
-
                 polygon.StrokeThickness = Double.Parse(polygonThickness.Text);
                 var stringFillColor = polygonFillColor.SelectedColorText;
                 polygon.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString(stringFillColor);
                 var BorderColor = polygonBroderColor.SelectedColorText;
                 polygon.Stroke = (SolidColorBrush)new BrushConverter().ConvertFromString(BorderColor);
-                //polygon.FillRule = FillRule.Nonzero;//prilikom crtanja polygona ako se linije izmedju temena preklope da oboji ono izmedju Fill bojom...
+                polygon.FillRule = FillRule.Nonzero;//prilikom crtanja polygona ako se linije izmedju temena preklope da oboji ono izmedju Fill bojom...
 
                 activeDrawTable.Children.Add(polygon);
 

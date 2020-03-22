@@ -199,7 +199,7 @@ namespace BasicGeometricShapes
         {
             UncheckMenuItems(0);
 
-            if (MainWindow.polygonPoints.Count > 0)//provera samo da li je krenuo da crta tacke poligona a hoce undo
+            if (MainWindow.polygonPoints.Count > 0)//provera samo da li je krenuo da crta tacke poligona a hoce redo
             {
                 MessageBoxResult result = MessageBox.Show("Would you like to continue drawing the polygon? If you don't want it, Clear operation will be performed.", "Polygon draw error!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 switch (result)
@@ -262,7 +262,7 @@ namespace BasicGeometricShapes
         {
             MainWindow.polygonPoints.Clear();
 
-            foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)//fejk pravljenje da dotovi nestanu... jer je referenca moze
+            foreach (Ellipse ellipseDot in MainWindow.tempPolyDots)
             {
                 ActiveCanvas.Children.Remove(ellipseDot);
             }

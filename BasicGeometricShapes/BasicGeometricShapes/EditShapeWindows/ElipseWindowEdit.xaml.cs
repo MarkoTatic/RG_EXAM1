@@ -20,7 +20,7 @@ namespace BasicGeometricShapes.EditShapeWindows
     /// </summary>
     public partial class ElipseWindowEdit : Window
     {
-        private Ellipse currentEllipse;//polje ne objekat... ide po referenci dakle...
+        private Ellipse currentEllipse;
         public Ellipse CurrentEllipse { get => currentEllipse; set => currentEllipse = value; }
 
         public ElipseWindowEdit(Ellipse ellipse)

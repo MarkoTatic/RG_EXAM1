@@ -42,7 +42,7 @@ namespace BasicGeometricShapes.AddShapeWindows
             if (IsValidate())
             {
                 Image image = new Image();
-                image.Stretch = Stretch.Fill;//da bi lepo pokrio sve velicine slike
+                image.Stretch = Stretch.Fill;//da bi lepo pokrio sve velicine slika
                 image.Width = Double.Parse(imageWidth.Text);
                 image.Height = Double.Parse(imageHeight.Text);
                 image.Source = imgSource.Source;
