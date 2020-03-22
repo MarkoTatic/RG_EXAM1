@@ -60,6 +60,7 @@ namespace BasicGeometricShapes.EditShapeWindows
                 labelThc.Content = "Must have a border thickness.";
                 rectangleThickness.BorderBrush = Brushes.Red;
 
+                validWorh = false;
                 isValid = false;
             }
             else
