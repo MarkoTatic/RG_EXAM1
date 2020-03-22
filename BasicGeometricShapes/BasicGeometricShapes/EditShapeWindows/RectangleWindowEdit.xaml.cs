@@ -95,7 +95,7 @@ namespace BasicGeometricShapes.EditShapeWindows
             {
                 if (Int32.Parse(rectangleThickness.Text.Trim()) > (Int32.Parse(currentRectangle.Width.ToString()) / 2) || Int32.Parse(rectangleThickness.Text.Trim()) > (Int32.Parse(currentRectangle.Height.ToString()) / 2))
                 {
-                    labelThc.Content = "Border thic. must be lower.";
+                    labelThc.Content = "Invalid border thicknes.";
                     rectangleThickness.BorderBrush = Brushes.Red;
 
                     isValid = false;

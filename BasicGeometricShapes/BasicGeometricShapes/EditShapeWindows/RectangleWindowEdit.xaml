@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:BasicGeometricShapes.EditShapeWindows"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="RectangleWindowEdit" Height="242" Width="310"
+        Title="RectangleWindowEdit" Height="252" Width="310"
         ResizeMode="NoResize">
     <Grid>
         <StackPanel Grid.Column="0">
             <Label Content="Fill Color:" HorizontalAlignment="Left" Height="23" Margin="10,18,0,0" VerticalAlignment="Top" Width="68"/>
-            <Label Content="Border Color:" HorizontalAlignment="Left" Height="25" Margin="10,22,0,0" VerticalAlignment="Top" Width="82"/>
-            <Label Content="Border Thickness:" HorizontalAlignment="Left" Height="26" Margin="10,22,0,0" VerticalAlignment="Top" Width="121"/>
-            <Button Content="Edit" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="10,36,0,0" VerticalAlignment="Top" Width="126" Click="EditRectangle"/>
+            <Label Content="Border Color:" HorizontalAlignment="Left" Height="25" Margin="10,23,0,0" VerticalAlignment="Top" Width="82"/>
+            <Label Content="Border Thickness:" HorizontalAlignment="Left" Height="26" Margin="10,23,0,0" VerticalAlignment="Top" Width="121"/>
+            <Button Content="Edit" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="10,42,0,0" VerticalAlignment="Top" Width="126" Click="EditRectangle"/>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <xctk:ColorPicker x:Name="rectangleFillColor" HorizontalAlignment="Left" Height="23" Margin="145,18,0,0" VerticalAlignment="Top" Width="139"></xctk:ColorPicker>
-            <Label  x:Name="labelFC" FontWeight="Bold" Foreground="Red"  Content=""   FontSize="9" HorizontalAlignment="Left" Height="20" Margin="145,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <Label  x:Name="labelFC" FontWeight="Bold" Foreground="Red"  Content=""   FontSize="9" HorizontalAlignment="Left" Height="22" Margin="145,0,0,0" VerticalAlignment="Top" Width="140"/>
             <xctk:ColorPicker x:Name="rectangleBroderColor" HorizontalAlignment="Left" Height="28" Margin="144,0,0,0" VerticalAlignment="Top" Width="139"/>
-            <Label  x:Name="labelBC" FontWeight="Bold" Foreground="Red"  Content=""  FontSize="9" HorizontalAlignment="Left" Height="20" Margin="145,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <Label  x:Name="labelBC" FontWeight="Bold" Foreground="Red"  Content=""  FontSize="9" HorizontalAlignment="Left" Height="22" Margin="145,0,0,0" VerticalAlignment="Top" Width="140"/>
             <TextBox x:Name="rectangleThickness" HorizontalAlignment="Left" Height="28" PreviewTextInput="NumberValidationTextBox" Margin="144,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
-            <Label  x:Name="labelThc" FontWeight="Bold" Foreground="Red"  Content=""   FontSize="9" HorizontalAlignment="Left" Height="20" Margin="145,0,0,0" VerticalAlignment="Top" Width="140"/>
+            <Label  x:Name="labelThc" FontWeight="Bold" Foreground="Red"  Content=""   FontSize="9" HorizontalAlignment="Left" Height="22" Margin="145,0,0,0" VerticalAlignment="Top" Width="140"/>
             <Button Content="Cancel" Background="#FFA2E8A2" HorizontalAlignment="Left" Height="28" Margin="158,15,0,0" VerticalAlignment="Top" Width="126" Click="CloseEdit" />
         </StackPanel>
     </Grid>

@@ -94,7 +94,7 @@ namespace BasicGeometricShapes.EditShapeWindows
             {
                 if (Int32.Parse(elipseThickness.Text.Trim()) > (Int32.Parse(currentEllipse.Width.ToString()) / 2) || Int32.Parse(elipseThickness.Text.Trim()) > (Int32.Parse(currentEllipse.Height.ToString()) / 2))
                 {
-                    labelThc.Content = "Border thic. must be lower.";
+                    labelThc.Content = "Invalid border thicknes.";
                     elipseThickness.BorderBrush = Brushes.Red;
 
                     isValid = false;

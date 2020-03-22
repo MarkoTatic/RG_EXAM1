@@ -141,7 +141,7 @@ namespace BasicGeometricShapes.AddShapeWindows
             {//provera da ne moze sirina okvira da bude veca od polovine visine ili sirine, jer nema smisla, deformise oblik saamim tim
                 if (Int32.Parse(rectangleThickness.Text.Trim()) > (Int32.Parse(rectangleWidth.Text.Trim()) / 2) || Int32.Parse(rectangleThickness.Text.Trim()) > (Int32.Parse(rectangleHeight.Text.Trim()) / 2))
                 {
-                    labelThk.Content = "Border thickness must be lower.";
+                    labelThk.Content = "Invalid border thicknes.";
                     rectangleThickness.BorderBrush = Brushes.Red;
 
                     isValid = false;
